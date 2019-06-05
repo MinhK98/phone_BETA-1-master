@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "HuyHoaDon";
+    Layout = "~/Views/Shared/_Layout_3.cshtml";
+}
+
+<h2> Hủy hóa đơn ngay! Bạn có chắc chắn? </h2>
+
+@using (Html.BeginForm("HuyHoaDon", "KHACHHANG", FormMethod.Post))
+{
+    <div class="form-actions no-color">
+        <span style="color: red;"><strong> Vui lòng nhập mã hóa đơn để xác nhận hủy bỏ. </strong></span>
+        <br>
+        <span> Tên Khách hàng:</span> @Html.TextBox("id_hd")
+        <input type="submit" value="Xóa" class="btn btn-default" name="Xóa" /> |
+        @Html.ActionLink("Quay về", "Index", "Home")
+    </div>
+}

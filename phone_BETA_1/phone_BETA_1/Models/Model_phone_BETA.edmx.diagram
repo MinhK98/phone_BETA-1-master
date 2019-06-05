@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b33592d65373468f983fee67066928a4" Name="Diagram1">
+        <EntityTypeShape EntityType="phone_BETAModel.ADMIN" Width="1.5" PointX="8" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="phone_BETAModel.CHITIET_HOADON" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="phone_BETAModel.HANG_SX" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="phone_BETAModel.HOADON" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phone_BETAModel.KHACHHANG" Width="1.5" PointX="1.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="phone_BETAModel.LOAIHANG" Width="1.5" PointX="3.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="phone_BETAModel.NHANVIEN" Width="1.5" PointX="5.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="phone_BETAModel.NHOMHANG" Width="1.5" PointX="3.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="phone_BETAModel.SANPHAM" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="phone_BETAModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="phone_BETAModel.FK__ADMINS__ID_Admin__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="phone_BETAModel.FK_CHITIET_HOADON_HOADON" ManuallyRouted="false" />
+        <AssociationConnector Association="phone_BETAModel.FK_CHITIET_HOADON_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="phone_BETAModel.FK__HOADON__ID_Custo__5CD6CB2B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="phone_BETAModel.CLIENT" Width="1.5" PointX="3.75" PointY="17.625" />
+        <AssociationConnector Association="phone_BETAModel.FK_CLIENTS_KHACHHANG" />
+        <AssociationConnector Association="phone_BETAModel.FK__SANPHAM__ID_HSX__2116E6DF" />
+        <AssociationConnector Association="phone_BETAModel.FK__SANPHAM__ID_LH__1F2E9E6D" />
+        <AssociationConnector Association="phone_BETAModel.FK__SANPHAM__ID_NH__2022C2A6" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

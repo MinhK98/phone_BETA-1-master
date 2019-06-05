@@ -1,0 +1,71 @@
+﻿@model phone_BETA_1.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_SP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_SP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price_SP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price_SP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year_SP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year_SP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraGop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraGop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhuKien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhuKien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            <img style="object-fit: cover;" src="@Url.Content(Model.Photo)" width="600" height="315" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Quay về", "Index", "Home")
+</p>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<phone_BETA_1.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "SanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> Danh sách sản phẩm </h2>
+
+<p>
+    @Html.ActionLink("Thêm mới sản phẩm", "ThemSanPham", "NHANVIEN")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_SP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name_SP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price_SP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year_SP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TraGop)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhuKien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_SP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name_SP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price_SP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year_SP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TraGop)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TinhTrang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhuKien)
+            </td>
+            <td>
+                <img style="object-fit: cover;" src="@Url.Content(item.Photo)" width="200" height="105" />
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh sửa", "SuaSanPham", new { id = item.ID_SP }) |
+                @Html.ActionLink("Chi tiết", "ChiTietSanPham", new { id = item.ID_SP }) |
+                @Html.ActionLink("Xóa", "XoaSanPham", new { id = item.ID_SP })
+            </td>
+        </tr>
+    }
+
+</table>

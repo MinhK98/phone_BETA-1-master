@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "OrderNow";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+@using phone_BETA_1.Controllers
+
+<h2> GIỎ HÀNG </h2>
+<table>
+    <tr>
+        <th>Mã sản phẩm</th>
+        <th>Tên sản phẩm</th>
+        <th>Giá tiền</th>
+        <th>Số lượng</th>
+        <th>Ảnh</th>
+        <th>Tổng tiền (VNĐ):</th>
+    </tr>
+    @{
+        decimal s = 0;
+    }
+    @foreach (Item item in (List<Item>)Session["Cart"])
+    {
+        s = s + (int)item.Sanpham.Price_SP.Value * item.Quantity;
+        <tr>
+            <td>@item.Sanpham.ID_SP</td>
+            <td>@item.Sanpham.Name_SP</td>
+            <td>@item.Sanpham.Price_SP</td>
+            <td>@item.Quantity</td>
+            <td><img style="object-fit: cover;" src="@Url.Content(item.Sanpham.Photo)" width="200" height="105" /></td>
+            <td>@(item.Sanpham.Price_SP * item.Quantity) </td>
+            <td>@Html.ActionLink("Xóa", "Delete", "CART", new { id = item.Sanpham.ID_SP }, null)</td>
+        </tr>
+    }
+</table>
+<br /> <br />
+@Html.ActionLink("Tiếp tục mua sắm", "Index", "Home")
+
+@using (Html.BeginForm("ProcessOrder", "CART", FormMethod.Post, new { id = "customer-form" }))
+{
+    <strong>Hóa đơn tổng: </strong> <input type="text" name="totalPrice" value=@s readonly>
+    <table>
+        <tr>
+            <td> THÔNG TIN KHÁCH HÀNG: </td>
+        </tr>
+        <tr style="visibility: hidden;">
+            <td> Mã khách hàng: </td>
+            <td><input type="text" name="cusID" value=@Session["ID_Customer"] readonly/></td>
+        </tr>
+        <tr>
+            <td> Tên khách hàng: </td>
+            <td><input type="text" name="cusName" required /></td>
+        </tr>
+        <tr>
+            <td> Số điện thoại: </td>
+            <td><input type="text" name="cusPhone" required /></td>
+        </tr>
+        <tr>
+            <td> Địa chỉ Email: </td>
+            <td><input type="text" name="cusEmail" required /></td>
+        </tr>
+        <tr>
+            <td> Địa chỉ liên hệ: </td>
+            <td><input type="text" name="cusAddress" required /></td>
+        </tr>
+        <tr>
+            <td colspan="3"><input type="submit" value="Thanh toán"/></td>
+        </tr>
+    </table>
+}
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

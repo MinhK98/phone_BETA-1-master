@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" charset="utf-8"/>
+    <title> Trang chủ </title>
+</head>
+<body>
+    <p> TÊN ĐĂNG NHẬP: @Session["Log_Customer"] </p>
+    <p style="visibility: hidden;"> MÃ KHÁCH HÀNG: @Session["ID_Customer"] </p>
+    <p><a href="@Url.Action("SignIn","CLIENT")"> Đăng nhập </a></p>
+    <p> HÔM NAY, NGÀY @DateTime.Now.ToString("dd-MM-yyyy") </p>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<phone_BETA_1.Models.HOADON>
+
+@{
+    ViewBag.Title = "HoaDon";
+    Layout = "~/Views/Shared/_Layout_3.cshtml";
+}
+
+<a href="@Url.Action("TimKiemHoaDon", "KHACHHANG")" style="color: red;"><strong> Tìm kiếm theo ngày </strong></a>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_HD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SDT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongTien)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_HD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateCreate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_Customer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TinhTrang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongTien)
+        </td>
+        <td>
+            @Html.ActionLink("Chi tiết", "ChiTietHoaDon", new {  id=item.ID_HD }) |
+            @Html.ActionLink("Hủy", "HuyHoaDon", new {  id=item.ID_HD  })
+        </td>
+    </tr>
+}
+
+</table>
