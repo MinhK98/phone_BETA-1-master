@@ -219,6 +219,12 @@
         <Function Name="HoaDon_SearchHD_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DateCreate" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="HoaDon_SearchHD_3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name_Customer" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="HoaDon_SearchHoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TinhTrang" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="Huy_HoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_HD" Type="nvarchar" Mode="In" />
         </Function>
@@ -650,6 +656,38 @@
             <Parameter Name="ID_HSX" Mode="In" Type="String" />
             <Parameter Name="ID_LH" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="HoaDon_SearchHD_3" ReturnType="Collection(phone_BETAModel.HoaDon_SearchHD_3_Result)">
+          <Parameter Name="Name_Customer" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_SearchHoaDon" ReturnType="Collection(phone_BETAModel.HoaDon_SearchHoaDon_Result1)">
+          <Parameter Name="TinhTrang" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SearchHD_3" EntitySet="HOADONs" ReturnType="Collection(phone_BETAModel.HOADON)">
+            <Parameter Name="Name_Customer" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_HD_1" EntitySet="HOADONs" ReturnType="Collection(phone_BETAModel.HOADON)">
+            <Parameter Name="TinhTrang" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_SP_3" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+            <Parameter Name="ID_NH" Mode="In" Type="String" />
+            <Parameter Name="ID_HSX" Mode="In" Type="String" />
+            <Parameter Name="ID_LH" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_SP_HSX" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+            <Parameter Name="ID_HSX" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_SP_LH" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+            <Parameter Name="ID_LH" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_SP_NH" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+            <Parameter Name="ID_NH" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_SP_Name" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+            <Parameter Name="Name_SP" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Search_SP_TinhTrang" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+            <Parameter Name="TinhTrang" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -849,6 +887,28 @@
           <Property Type="Int32" Name="ID_NH" Nullable="true" />
           <Property Type="Int32" Name="ID_LH" Nullable="true" />
           <Property Type="Int32" Name="ID_HSX" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="HoaDon_SearchHD_3_Result">
+          <Property Type="Int32" Name="ID_HD" Nullable="false" />
+          <Property Type="String" Name="Name_Customer" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DateCreate" Nullable="true" />
+          <Property Type="String" Name="SDT" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="ID_Customer" Nullable="true" />
+          <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TongTien" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="HoaDon_SearchHoaDon_Result1">
+          <Property Type="Int32" Name="ID_HD" Nullable="false" />
+          <Property Type="String" Name="Name_Customer" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DateCreate" Nullable="true" />
+          <Property Type="String" Name="SDT" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="ID_Customer" Nullable="true" />
+          <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TongTien" Nullable="true" MaxLength="20" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1154,6 +1214,44 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HoaDon_SearchHD_3" FunctionName="phone_BETAModel.Store.HoaDon_SearchHD_3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="phone_BETAModel.HoaDon_SearchHD_3_Result">
+                <ScalarProperty Name="ID_HD" ColumnName="ID_HD" />
+                <ScalarProperty Name="Name_Customer" ColumnName="Name_Customer" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="ID_Customer" ColumnName="ID_Customer" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HoaDon_SearchHoaDon" FunctionName="phone_BETAModel.Store.HoaDon_SearchHoaDon">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="phone_BETAModel.HoaDon_SearchHoaDon_Result1">
+                <ScalarProperty Name="ID_HD" ColumnName="ID_HD" />
+                <ScalarProperty Name="Name_Customer" ColumnName="Name_Customer" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="ID_Customer" ColumnName="ID_Customer" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchHD_3" FunctionName="phone_BETAModel.Store.HoaDon_SearchHD_3" />
+          <FunctionImportMapping FunctionImportName="Search_HD_1" FunctionName="phone_BETAModel.Store.HoaDon_SearchHoaDon" />
+          <FunctionImportMapping FunctionImportName="Search_SP_3" FunctionName="phone_BETAModel.Store.SanPham_Search_3" />
+          <FunctionImportMapping FunctionImportName="Search_SP_HSX" FunctionName="phone_BETAModel.Store.SanPham_SearchHSX" />
+          <FunctionImportMapping FunctionImportName="Search_SP_LH" FunctionName="phone_BETAModel.Store.SanPham_SearchLH" />
+          <FunctionImportMapping FunctionImportName="Search_SP_NH" FunctionName="phone_BETAModel.Store.SanPham_SearchNH" />
+          <FunctionImportMapping FunctionImportName="Search_SP_Name" FunctionName="phone_BETAModel.Store.SanPham_SearchTenSP" />
+          <FunctionImportMapping FunctionImportName="Search_SP_TinhTrang" FunctionName="phone_BETAModel.Store.SanPham_SearchTinhTrang" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

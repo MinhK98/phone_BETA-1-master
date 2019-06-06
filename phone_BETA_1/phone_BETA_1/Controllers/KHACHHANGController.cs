@@ -77,5 +77,33 @@ namespace phone_BETA_1.Controllers
             phone_BETAEntities1 entities = new phone_BETAEntities1();
             return View(entities.SearchHD_2(DateBill));
         }
+        // 6. Chức năng: XEM THÔNG TIN CÁ NHÂN
+        public ActionResult ThongTinKH(int id)
+        {
+            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            {
+                return View(db.KHACHHANGs.Where(x => x.ID_Customer == id).FirstOrDefault());
+            }
+        }
+
+        // 7. Chức năng: THAY ĐỔI THÔNG TIN CÁ NHÂN
+        public ActionResult SuaThongTin(int id)
+        {
+            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            {
+                return View(db.KHACHHANGs.Where(x => x.ID_Customer == id).FirstOrDefault());
+            }
+        }
+
+        [HttpPost]
+        public ActionResult SuaThongTin(int id, KHACHHANG khachhang)
+        {
+            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            {
+                db.Entry(khachhang).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("ThongTinKH", "KHACHHANG", new { id = Session["ID_Customer"] });
+        }
     }
 }

@@ -317,6 +317,38 @@
       <Parameter Name="ID_HSX" Mode="In" Type="String" />
       <Parameter Name="ID_LH" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="HoaDon_SearchHD_3" ReturnType="Collection(phone_BETAModel.HoaDon_SearchHD_3_Result)">
+      <Parameter Name="Name_Customer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_SearchHoaDon" ReturnType="Collection(phone_BETAModel.HoaDon_SearchHoaDon_Result1)">
+      <Parameter Name="TinhTrang" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchHD_3" EntitySet="HOADONs" ReturnType="Collection(phone_BETAModel.HOADON)">
+      <Parameter Name="Name_Customer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_HD_1" EntitySet="HOADONs" ReturnType="Collection(phone_BETAModel.HOADON)">
+      <Parameter Name="TinhTrang" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_SP_3" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="ID_NH" Mode="In" Type="String" />
+      <Parameter Name="ID_HSX" Mode="In" Type="String" />
+      <Parameter Name="ID_LH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_SP_HSX" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="ID_HSX" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_SP_LH" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="ID_LH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_SP_NH" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="ID_NH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_SP_Name" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="Name_SP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_SP_TinhTrang" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="TinhTrang" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -516,5 +548,27 @@
     <Property Type="Int32" Name="ID_NH" Nullable="true" />
     <Property Type="Int32" Name="ID_LH" Nullable="true" />
     <Property Type="Int32" Name="ID_HSX" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="HoaDon_SearchHD_3_Result">
+    <Property Type="Int32" Name="ID_HD" Nullable="false" />
+    <Property Type="String" Name="Name_Customer" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="DateCreate" Nullable="true" />
+    <Property Type="String" Name="SDT" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="ID_Customer" Nullable="true" />
+    <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TongTien" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="HoaDon_SearchHoaDon_Result1">
+    <Property Type="Int32" Name="ID_HD" Nullable="false" />
+    <Property Type="String" Name="Name_Customer" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="DateCreate" Nullable="true" />
+    <Property Type="String" Name="SDT" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="ID_Customer" Nullable="true" />
+    <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TongTien" Nullable="true" MaxLength="20" />
   </ComplexType>
 </Schema>

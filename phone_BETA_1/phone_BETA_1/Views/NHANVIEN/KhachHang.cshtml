@@ -12,7 +12,7 @@
     <title> Danh sách khách hàng </title>
 </head>
 <body>
-    @using (Html.BeginForm("DS_KhachHang", "NHANVIEN", FormMethod.Post))
+    @using (Html.BeginForm("KhachHang", "NHANVIEN", FormMethod.Post))
     {
         <span>Customer Name:</span> @Html.TextBox("NameCustomer")
         <input type="submit" value="Tìm kiếm" />

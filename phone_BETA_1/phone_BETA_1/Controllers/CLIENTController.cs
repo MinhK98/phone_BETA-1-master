@@ -80,7 +80,7 @@ namespace phone_BETA_1.Controllers
             }
         }
 
-        // Chỉnh sửa thông tin tài khoản:
+        // 3. Chức năng: CHỈNH SỬA THÔNG TIN TÀI KHOẢN
         public ActionResult Edit(int id)
         {
             using (phone_BETAEntities1 db = new phone_BETAEntities1())
@@ -89,7 +89,6 @@ namespace phone_BETA_1.Controllers
             }
         }
 
-        // POST: 
         [HttpPost]
         public ActionResult Edit(int id, CLIENT client)
         {

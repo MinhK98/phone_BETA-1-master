@@ -490,5 +490,183 @@ namespace phone_BETA_1.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SanPham_Search_3_Result>("SanPham_Search_3", iD_NHParameter, iD_HSXParameter, iD_LHParameter);
         }
+    
+        public virtual ObjectResult<HoaDon_SearchHD_3_Result> HoaDon_SearchHD_3(string name_Customer)
+        {
+            var name_CustomerParameter = name_Customer != null ?
+                new ObjectParameter("Name_Customer", name_Customer) :
+                new ObjectParameter("Name_Customer", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HoaDon_SearchHD_3_Result>("HoaDon_SearchHD_3", name_CustomerParameter);
+        }
+    
+        public virtual ObjectResult<HoaDon_SearchHoaDon_Result1> HoaDon_SearchHoaDon(string tinhTrang)
+        {
+            var tinhTrangParameter = tinhTrang != null ?
+                new ObjectParameter("TinhTrang", tinhTrang) :
+                new ObjectParameter("TinhTrang", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HoaDon_SearchHoaDon_Result1>("HoaDon_SearchHoaDon", tinhTrangParameter);
+        }
+    
+        public virtual ObjectResult<HOADON> SearchHD_3(string name_Customer)
+        {
+            var name_CustomerParameter = name_Customer != null ?
+                new ObjectParameter("Name_Customer", name_Customer) :
+                new ObjectParameter("Name_Customer", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOADON>("SearchHD_3", name_CustomerParameter);
+        }
+    
+        public virtual ObjectResult<HOADON> SearchHD_3(string name_Customer, MergeOption mergeOption)
+        {
+            var name_CustomerParameter = name_Customer != null ?
+                new ObjectParameter("Name_Customer", name_Customer) :
+                new ObjectParameter("Name_Customer", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOADON>("SearchHD_3", mergeOption, name_CustomerParameter);
+        }
+    
+        public virtual ObjectResult<HOADON> Search_HD_1(string tinhTrang)
+        {
+            var tinhTrangParameter = tinhTrang != null ?
+                new ObjectParameter("TinhTrang", tinhTrang) :
+                new ObjectParameter("TinhTrang", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOADON>("Search_HD_1", tinhTrangParameter);
+        }
+    
+        public virtual ObjectResult<HOADON> Search_HD_1(string tinhTrang, MergeOption mergeOption)
+        {
+            var tinhTrangParameter = tinhTrang != null ?
+                new ObjectParameter("TinhTrang", tinhTrang) :
+                new ObjectParameter("TinhTrang", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOADON>("Search_HD_1", mergeOption, tinhTrangParameter);
+        }
+    
+        public virtual ObjectResult<SANPHAM> Search_SP_3(string iD_NH, string iD_HSX, string iD_LH)
+        {
+            var iD_NHParameter = iD_NH != null ?
+                new ObjectParameter("ID_NH", iD_NH) :
+                new ObjectParameter("ID_NH", typeof(string));
+    
+            var iD_HSXParameter = iD_HSX != null ?
+                new ObjectParameter("ID_HSX", iD_HSX) :
+                new ObjectParameter("ID_HSX", typeof(string));
+    
+            var iD_LHParameter = iD_LH != null ?
+                new ObjectParameter("ID_LH", iD_LH) :
+                new ObjectParameter("ID_LH", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_3", iD_NHParameter, iD_HSXParameter, iD_LHParameter);
+        }
+    
+        public virtual ObjectResult<SANPHAM> Search_SP_3(string iD_NH, string iD_HSX, string iD_LH, MergeOption mergeOption)
+        {
+            var iD_NHParameter = iD_NH != null ?
+                new ObjectParameter("ID_NH", iD_NH) :
+                new ObjectParameter("ID_NH", typeof(string));
+    
+            var iD_HSXParameter = iD_HSX != null ?
+                new ObjectParameter("ID_HSX", iD_HSX) :
+                new ObjectParameter("ID_HSX", typeof(string));
+    
+            var iD_LHParameter = iD_LH != null ?
+                new ObjectParameter("ID_LH", iD_LH) :
+                new ObjectParameter("ID_LH", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_3", mergeOption, iD_NHParameter, iD_HSXParameter, iD_LHParameter);
+        }
+    
+        public virtual ObjectResult<SANPHAM> Search_SP_HSX(string iD_HSX)
+        {
+            var iD_HSXParameter = iD_HSX != null ?
+                new ObjectParameter("ID_HSX", iD_HSX) :
+                new ObjectParameter("ID_HSX", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_HSX", iD_HSXParameter);
+        }
+    
+        public virtual ObjectResult<SANPHAM> Search_SP_HSX(string iD_HSX, MergeOption mergeOption)
+        {
+            var iD_HSXParameter = iD_HSX != null ?
+                new ObjectParameter("ID_HSX", iD_HSX) :
+                new ObjectParameter("ID_HSX", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_HSX", mergeOption, iD_HSXParameter);
+        }
+    
+        public virtual ObjectResult<SANPHAM> Search_SP_LH(string iD_LH)
+        {
+            var iD_LHParameter = iD_LH != null ?
+                new ObjectParameter("ID_LH", iD_LH) :
+                new ObjectParameter("ID_LH", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_LH", iD_LHParameter);
+        }
+    
+        public virtual ObjectResult<SANPHAM> Search_SP_LH(string iD_LH, MergeOption mergeOption)
+        {
+            var iD_LHParameter = iD_LH != null ?
+                new ObjectParameter("ID_LH", iD_LH) :
+                new ObjectParameter("ID_LH", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_LH", mergeOption, iD_LHParameter);
+        }
+    
+        public virtual ObjectResult<SANPHAM> Search_SP_NH(string iD_NH)
+        {
+            var iD_NHParameter = iD_NH != null ?
+                new ObjectParameter("ID_NH", iD_NH) :
+                new ObjectParameter("ID_NH", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_NH", iD_NHParameter);
+        }
+    
+        public virtual ObjectResult<SANPHAM> Search_SP_NH(string iD_NH, MergeOption mergeOption)
+        {
+            var iD_NHParameter = iD_NH != null ?
+                new ObjectParameter("ID_NH", iD_NH) :
+                new ObjectParameter("ID_NH", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_NH", mergeOption, iD_NHParameter);
+        }
+    
+        public virtual ObjectResult<SANPHAM> Search_SP_Name(string name_SP)
+        {
+            var name_SPParameter = name_SP != null ?
+                new ObjectParameter("Name_SP", name_SP) :
+                new ObjectParameter("Name_SP", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_Name", name_SPParameter);
+        }
+    
+        public virtual ObjectResult<SANPHAM> Search_SP_Name(string name_SP, MergeOption mergeOption)
+        {
+            var name_SPParameter = name_SP != null ?
+                new ObjectParameter("Name_SP", name_SP) :
+                new ObjectParameter("Name_SP", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_Name", mergeOption, name_SPParameter);
+        }
+    
+        public virtual ObjectResult<SANPHAM> Search_SP_TinhTrang(string tinhTrang)
+        {
+            var tinhTrangParameter = tinhTrang != null ?
+                new ObjectParameter("TinhTrang", tinhTrang) :
+                new ObjectParameter("TinhTrang", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_TinhTrang", tinhTrangParameter);
+        }
+    
+        public virtual ObjectResult<SANPHAM> Search_SP_TinhTrang(string tinhTrang, MergeOption mergeOption)
+        {
+            var tinhTrangParameter = tinhTrang != null ?
+                new ObjectParameter("TinhTrang", tinhTrang) :
+                new ObjectParameter("TinhTrang", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_TinhTrang", mergeOption, tinhTrangParameter);
+        }
     }
 }

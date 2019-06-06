@@ -299,5 +299,43 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="HoaDon_SearchHD_3" FunctionName="phone_BETAModel.Store.HoaDon_SearchHD_3">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="phone_BETAModel.HoaDon_SearchHD_3_Result">
+          <ScalarProperty Name="ID_HD" ColumnName="ID_HD" />
+          <ScalarProperty Name="Name_Customer" ColumnName="Name_Customer" />
+          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="ID_Customer" ColumnName="ID_Customer" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="HoaDon_SearchHoaDon" FunctionName="phone_BETAModel.Store.HoaDon_SearchHoaDon">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="phone_BETAModel.HoaDon_SearchHoaDon_Result1">
+          <ScalarProperty Name="ID_HD" ColumnName="ID_HD" />
+          <ScalarProperty Name="Name_Customer" ColumnName="Name_Customer" />
+          <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="ID_Customer" ColumnName="ID_Customer" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchHD_3" FunctionName="phone_BETAModel.Store.HoaDon_SearchHD_3" />
+    <FunctionImportMapping FunctionImportName="Search_HD_1" FunctionName="phone_BETAModel.Store.HoaDon_SearchHoaDon" />
+    <FunctionImportMapping FunctionImportName="Search_SP_3" FunctionName="phone_BETAModel.Store.SanPham_Search_3" />
+    <FunctionImportMapping FunctionImportName="Search_SP_HSX" FunctionName="phone_BETAModel.Store.SanPham_SearchHSX" />
+    <FunctionImportMapping FunctionImportName="Search_SP_LH" FunctionName="phone_BETAModel.Store.SanPham_SearchLH" />
+    <FunctionImportMapping FunctionImportName="Search_SP_NH" FunctionName="phone_BETAModel.Store.SanPham_SearchNH" />
+    <FunctionImportMapping FunctionImportName="Search_SP_Name" FunctionName="phone_BETAModel.Store.SanPham_SearchTenSP" />
+    <FunctionImportMapping FunctionImportName="Search_SP_TinhTrang" FunctionName="phone_BETAModel.Store.SanPham_SearchTinhTrang" />
   </EntityContainerMapping>
 </Mapping>

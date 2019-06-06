@@ -10,6 +10,20 @@
 <p>
     @Html.ActionLink("Thêm mới sản phẩm", "ThemSanPham", "NHANVIEN")
 </p>
+
+<a href="@Url.Action("TimKiemSanPham_LoaiHang", "NHANVIEN")" style="color: red;"><strong> Tìm kiếm theo loại hàng </strong></a>
+<br>
+<a href="@Url.Action("TimKiemSanPham_NhomHang", "NHANVIEN")" style="color: red;"><strong> Tìm kiếm theo nhóm hàng  </strong></a>
+<br>
+<a href="@Url.Action("TimKiemSanPham_HSX", "NHANVIEN")" style="color: red;"><strong> Tìm kiếm theo hãng sản xuất </strong></a>
+<br>
+<a href="@Url.Action("TimKiemSanPham_Ca3", "NHANVIEN")" style="color: red;"><strong> Tìm kiếm theo cả 3 </strong></a>
+<br>
+<a href="@Url.Action("TimKiemSanPham_TinhTrang", "NHANVIEN")" style="color: red;"><strong> Tìm kiếm theo tình trạng </strong></a>
+<br>
+<a href="@Url.Action("TimKiemSanPham_TenSP", "NHANVIEN")" style="color: red;"><strong> Tìm kiếm theo tên </strong></a>
+<br>
+
 <table class="table">
     <tr>
         <th>

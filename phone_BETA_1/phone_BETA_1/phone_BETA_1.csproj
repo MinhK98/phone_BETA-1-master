@@ -156,10 +156,16 @@
     <Compile Include="Models\HoaDon_SearchHD_2_Result.cs">
       <DependentUpon>Model_phone_BETA.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HoaDon_SearchHD_3_Result.cs">
+      <DependentUpon>Model_phone_BETA.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\HoaDon_SearchHD_Result.cs">
       <DependentUpon>Model_phone_BETA.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HoaDon_SearchHoaDon_Result.cs">
+      <DependentUpon>Model_phone_BETA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HoaDon_SearchHoaDon_Result1.cs">
       <DependentUpon>Model_phone_BETA.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KHACHHANG.cs">
@@ -327,6 +333,30 @@
     <Content Include="Views\KHACHHANG\HuyHoaDon.cshtml" />
     <Content Include="Views\KHACHHANG\XoaTaiKhoan.cshtml" />
     <Content Include="Views\KHACHHANG\TimKiemHoaDon.cshtml" />
+    <Content Include="Views\NHANVIEN\TimKiemHoaDon_Ngay.cshtml" />
+    <Content Include="Views\NHANVIEN\TimKiemHoaDon_Name.cshtml" />
+    <Content Include="Views\NHANVIEN\TimKiemHoaDon_TinhTrang.cshtml" />
+    <Content Include="Views\NHANVIEN\TimKiemSanPham_LoaiHang.cshtml" />
+    <Content Include="Views\NHANVIEN\TimKiemSanPham_NhomHang.cshtml" />
+    <Content Include="Views\NHANVIEN\TimKiemSanPham_HSX.cshtml" />
+    <Content Include="Views\NHANVIEN\TimKiemSanPham_Ca3.cshtml" />
+    <Content Include="Views\NHANVIEN\TimKiemSanPham_TinhTrang.cshtml" />
+    <Content Include="Views\NHANVIEN\TimKiemSanPham_TenSP.cshtml" />
+    <Content Include="Views\Home\TimKiemSanPham_HSX.cshtml" />
+    <Content Include="Views\Home\TimKiemSanPham_NhomHang.cshtml" />
+    <Content Include="Views\Home\TimKiemSanPham_LoaiHang.cshtml" />
+    <Content Include="Views\Home\TimKiemSanPham_TenSP.cshtml" />
+    <Content Include="Views\NHANVIEN\LoaiHang.cshtml" />
+    <Content Include="Views\NHANVIEN\ThemLoaiHang.cshtml" />
+    <Content Include="Views\NHANVIEN\SuaLoaiHang.cshtml" />
+    <Content Include="Views\NHANVIEN\NhomHang.cshtml" />
+    <Content Include="Views\NHANVIEN\SuaNhomHang.cshtml" />
+    <Content Include="Views\NHANVIEN\ThemNhomHang.cshtml" />
+    <Content Include="Views\NHANVIEN\HangSX.cshtml" />
+    <Content Include="Views\NHANVIEN\ThemHangSX.cshtml" />
+    <Content Include="Views\NHANVIEN\SuaHangSX.cshtml" />
+    <Content Include="Views\KHACHHANG\ThongTinKH.cshtml" />
+    <Content Include="Views\KHACHHANG\SuaThongTin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

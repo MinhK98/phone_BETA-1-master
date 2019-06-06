@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "TimKiemSanPham_TenSP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title> Danh sách hóa đơn </title>
+</head>
+<body>
+    @using (Html.BeginForm("TimKiemSanPham_TenSP", "NHANVIEN", FormMethod.Post))
+    {
+        <span> Tên sản phẩm:</span> @Html.TextBox("Name_SP")
+        <input type="submit" value="Tìm kiếm" />
+        <br />
+        <br />
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th> Mã sản phẩm </th>
+                <th> Tên sản phẩm </th>
+                <th> Giá sản phẩm </th>
+                <th> Năm sản phẩm </th>
+                <th> Trả góp </th>
+                <th> Tình trạng </th>
+                <th> Phụ kiện </th>
+                <th> Ảnh </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID_SP</td>
+                    <td>@item.Name_SP</td>
+                    <td>@item.Price_SP</td>
+                    <td>@item.Year_SP</td>
+                    <td>@item.TraGop</td>
+                    <td>@item.TinhTrang</td>
+                    <td>@item.PhuKien</td>
+                    <td><img style="object-fit: cover;" src="@Url.Content(item.Photo)" width="200" height="105" /></td>
+                    <td>
+                        |
+                        @Html.ActionLink("Chi tiết", "ChiTietSanPham", new { id = item.ID_SP })
+                        @Html.ActionLink("Xóa", "XoaSanPham", new { id = item.ID_SP })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</body>
+</html>
+

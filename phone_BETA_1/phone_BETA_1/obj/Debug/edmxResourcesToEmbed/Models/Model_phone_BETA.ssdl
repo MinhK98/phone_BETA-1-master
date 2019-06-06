@@ -214,6 +214,12 @@
   <Function Name="HoaDon_SearchHD_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DateCreate" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="HoaDon_SearchHD_3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name_Customer" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_SearchHoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TinhTrang" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="Huy_HoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_HD" Type="nvarchar" Mode="In" />
   </Function>

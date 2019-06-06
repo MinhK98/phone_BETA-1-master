@@ -169,6 +169,20 @@ END
 
 HoaDon_SearchHD_2 '2019-06-01'
 
+--- Tìm kiếm hóa đơn theo tên khách hàng: (PHÍA ADMIN)
+CREATE PROCEDURE HoaDon_SearchHD_3 (@Name_Customer nvarchar(50))
+AS
+BEGIN
+	  DECLARE @query nvarchar(50)
+      SET NOCOUNT ON;
+	  SELECT @query = dbo.non_unicode_convert(@Name_Customer)
+      SELECT *
+      FROM HOADON
+      WHERE dbo.non_unicode_convert(Name_Customer) LIKE '%' + @query + '%'
+END
+
+HoaDon_SearchHD_3 'Vuong Anh'
+
 --- Tự động xóa thông tin trong bảng CLIENT khi xóa thông tin KHACHHANG:
 create proc XoaTK_KHACHHANG (@ID_Customer nvarchar(3))
 as 
@@ -190,8 +204,7 @@ as
 begin 
 	DECLARE @ID_HD AS NVARCHAR(3);
 	SELECT @ID_HD = ID_HD from CHITIET_HOADON where ID_SP = @ID_SP
-	DELETE from CHITIET_HOADON where ID_HD = @ID_HD
-	DELETE from HOADON where HOADON.ID_HD = @ID_HD
+	DELETE from CHITIET_HOADON where ID_SP = @ID_SP
 	DELETE from SANPHAM where ID_SP = @ID_SP
 end 
 go 
@@ -302,7 +315,7 @@ BEGIN
       WHERE ID_LH = @ID_LH
 END
 
-SanPham_SearchLH ''
+SanPham_SearchLH '1'
 --- Tìm kiếm theo nhóm hàng:
 CREATE PROCEDURE SanPham_SearchNH
       @ID_NH nvarchar(3)
@@ -327,9 +340,9 @@ BEGIN
       WHERE ID_NH = @ID_NH and ID_LH = @ID_LH and ID_HSX = @ID_HSX
 END
 
-SanPham_Search '','',''
+SanPham_Search_3 '6','3','4'
 
---- Tìm kiếm theo tình trạng:
+--- Tìm kiếm sản phẩm theo tình trạng:
 CREATE PROCEDURE SanPham_SearchTinhTrang
       @TinhTrang nvarchar(30)
 AS
@@ -344,5 +357,19 @@ END
 
 SanPham_SearchTinhTrang 'Co'
 
+--- Tìm kiếm hóa đơn theo tình trạng;
+CREATE PROCEDURE HoaDon_SearchHoaDon
+      @TinhTrang nvarchar(30)
+AS
+BEGIN
+      DECLARE @query nvarchar(50)
+      SET NOCOUNT ON;
+	  SELECT @query = dbo.non_unicode_convert(@TinhTrang)
+      SELECT *
+      FROM HOADON
+      WHERE dbo.non_unicode_convert(TinhTrang) LIKE '%' + @query + '%'
+END
+
+HoaDon_SearchHoaDon 'Dang'
 
 

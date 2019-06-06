@@ -29,6 +29,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="@Url.Action("LogOut","ADMIN")"> Đăng xuất </a></li>
                     <li><a href="@Url.Action("Edit","ADMIN", new { id = Session["ID_Admin"] })"> Thông tin tài khoản </a></li>
+                    
                     <li>@Html.ActionLink("Danh sách khách hàng", "KhachHang", "NHANVIEN")</li>
                     <li>@Html.ActionLink("Danh sách sản phẩm", "SanPham", "NHANVIEN")</li>
                     <li>@Html.ActionLink("Danh sách hóa đơn", "HoaDon", "NHANVIEN")</li>

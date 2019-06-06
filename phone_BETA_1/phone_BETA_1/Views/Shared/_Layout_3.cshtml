@@ -28,7 +28,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="@Url.Action("LogOut","CLIENT")"> Đăng xuất </a></li>
-                    <li><a href="@Url.Action("Edit","CLIENT", new { id = Session["ID_Customer"] })"> Thông tin tài khoản </a></li>
+                    <li><a href="@Url.Action("ThongTinKH","KHACHHANG", new { id = Session["ID_Customer"] })"> Thông tin tài khoản </a></li>
                     <li><a href="@Url.Action("HoaDon", "KHACHHANG", new { id = Session["ID_Customer"] })"> Hóa đơn khách hàng </a></li>
                 </ul>
             </div>
