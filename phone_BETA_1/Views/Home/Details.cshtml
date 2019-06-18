@@ -1,0 +1,105 @@
+﻿@model phone_BETA_1.Models.ChiTietSanPham_Result1
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+
+@using (Html.BeginForm("Details", "Home", FormMethod.Post))
+{
+    <table cellpadding="0" cellspacing="0" class="table">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Mã_sản_phẩm)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Mã_sản_phẩm)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Tên_sản_phẩm)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Tên_sản_phẩm)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Giá_sản_phẩm)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Giá_sản_phẩm)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Năm_sản_xuất)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Năm_sản_xuất)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Trả_góp)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Trả_góp)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Tình_trạng)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Tình_trạng)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Phụ_kiện)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Phụ_kiện)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Ảnh)
+            </dt>
+
+            <dd>
+                <img style="object-fit: cover;" src="@Url.Content(Model.Ảnh)" width="600" height="315" />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Hãng_sản_suất)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Hãng_sản_suất)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Loại_hàng)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Loại_hàng)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nhóm_hàng)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nhóm_hàng)
+            </dd>
+
+        </dl>
+    </table>
+}
+<p>
+    @Html.ActionLink("Quay về", "Index", "Home")
+</p>

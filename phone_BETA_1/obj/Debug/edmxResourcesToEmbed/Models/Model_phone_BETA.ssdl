@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="phone_BETAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ADMINS">
+    <Key>
+      <PropertyRef Name="ID_Admin" />
+    </Key>
+    <Property Name="ID_Admin" Type="int" Nullable="false" />
+    <Property Name="Log_Admin" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pass" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CHITIET_HOADON">
+    <Key>
+      <PropertyRef Name="ID_HD" />
+      <PropertyRef Name="ID_SP" />
+    </Key>
+    <Property Name="ID_HD" Type="int" Nullable="false" />
+    <Property Name="ID_SP" Type="int" Nullable="false" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="Price_CTHD" Type="float" />
+    <Property Name="Name_SP" Type="nvarchar" MaxLength="50" />
+    <Property Name="Photo" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="CLIENTS">
+    <Key>
+      <PropertyRef Name="ID_Customer" />
+    </Key>
+    <Property Name="ID_Customer" Type="int" Nullable="false" />
+    <Property Name="Log_Customer" Type="nvarchar" MaxLength="50" />
+    <Property Name="Pass" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="HANG_SX">
+    <Key>
+      <PropertyRef Name="ID_HSX" />
+    </Key>
+    <Property Name="ID_HSX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_HSX" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="HOADON">
+    <Key>
+      <PropertyRef Name="ID_HD" />
+    </Key>
+    <Property Name="ID_HD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Customer" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateCreate" Type="date" />
+    <Property Name="SDT" Type="nvarchar" MaxLength="20" />
+    <Property Name="ID_Customer" Type="int" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="20" />
+    <Property Name="TongTien" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="ID_Customer" />
+    </Key>
+    <Property Name="ID_Customer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Customer" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="5" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateOfBirth" Type="date" />
+  </EntityType>
+  <EntityType Name="LOAIHANG">
+    <Key>
+      <PropertyRef Name="ID_LH" />
+    </Key>
+    <Property Name="ID_LH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_LH" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="ID_Admin" />
+    </Key>
+    <Property Name="ID_Admin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Admin" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sex" Type="nvarchar" MaxLength="5" />
+    <Property Name="DateOfBirth" Type="date" />
+    <Property Name="DateOfWork" Type="date" />
+    <Property Name="Salary" Type="float" />
+  </EntityType>
+  <EntityType Name="NHOMHANG">
+    <Key>
+      <PropertyRef Name="ID_NH" />
+    </Key>
+    <Property Name="ID_NH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_NH" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SANPHAM">
+    <Key>
+      <PropertyRef Name="ID_SP" />
+    </Key>
+    <Property Name="ID_SP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_SP" Type="nvarchar" MaxLength="50" />
+    <Property Name="Price_SP" Type="float" />
+    <Property Name="Year_SP" Type="float" />
+    <Property Name="TraGop" Type="float" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="30" />
+    <Property Name="PhuKien" Type="nvarchar" MaxLength="50" />
+    <Property Name="Photo" Type="varchar(max)" />
+    <Property Name="ID_NH" Type="int" />
+    <Property Name="ID_LH" Type="int" />
+    <Property Name="ID_HSX" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__ADMINS__ID_Admin__4D94879B">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+    <End Role="ADMINS" Type="Self.ADMINS" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="ID_Admin" />
+      </Principal>
+      <Dependent Role="ADMINS">
+        <PropertyRef Name="ID_Admin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADON__ID_Custo__5CD6CB2B">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="ID_Customer" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="ID_Customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SANPHAM__ID_HSX__2116E6DF">
+    <End Role="HANG_SX" Type="Self.HANG_SX" Multiplicity="0..1" />
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANG_SX">
+        <PropertyRef Name="ID_HSX" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="ID_HSX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SANPHAM__ID_LH__1F2E9E6D">
+    <End Role="LOAIHANG" Type="Self.LOAIHANG" Multiplicity="0..1" />
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIHANG">
+        <PropertyRef Name="ID_LH" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="ID_LH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SANPHAM__ID_NH__2022C2A6">
+    <End Role="NHOMHANG" Type="Self.NHOMHANG" Multiplicity="0..1" />
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHOMHANG">
+        <PropertyRef Name="ID_NH" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="ID_NH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHITIET_HOADON_HOADON">
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
+    <End Role="CHITIET_HOADON" Type="Self.CHITIET_HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADON">
+        <PropertyRef Name="ID_HD" />
+      </Principal>
+      <Dependent Role="CHITIET_HOADON">
+        <PropertyRef Name="ID_HD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHITIET_HOADON_SANPHAM">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="CHITIET_HOADON" Type="Self.CHITIET_HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="ID_SP" />
+      </Principal>
+      <Dependent Role="CHITIET_HOADON">
+        <PropertyRef Name="ID_SP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLIENTS_KHACHHANG">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
+    <End Role="CLIENTS" Type="Self.CLIENTS" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="ID_Customer" />
+      </Principal>
+      <Dependent Role="CLIENTS">
+        <PropertyRef Name="ID_Customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ChiTietSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_SP" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="HoaDon_SearchHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name_Customer" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateCreate" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_SearchHD_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateCreate" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_SearchHD_3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name_Customer" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_SearchHoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TinhTrang" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Huy_HoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_HD" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="KhachHang_SearchKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name_Customer" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="non_unicode_convert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar(max)">
+    <Parameter Name="inputVar" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="SanPham_Search_3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_NH" Type="nvarchar" Mode="In" />
+    <Parameter Name="ID_HSX" Type="nvarchar" Mode="In" />
+    <Parameter Name="ID_LH" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SanPham_SearchHSX" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_HSX" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SanPham_SearchLH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_LH" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SanPham_SearchNH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_NH" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SanPham_SearchTenSP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name_SP" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SanPham_SearchTinhTrang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TinhTrang" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Xoa_SanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_SP" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="XoaTK_KHACHHANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Customer" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="XoaTK_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_Admin" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="phone_BETAModelStoreContainer">
+    <EntitySet Name="ADMINS" EntityType="Self.ADMINS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CHITIET_HOADON" EntityType="Self.CHITIET_HOADON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CLIENTS" EntityType="Self.CLIENTS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HANG_SX" EntityType="Self.HANG_SX" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOAIHANG" EntityType="Self.LOAIHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHOMHANG" EntityType="Self.NHOMHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ADMINS__ID_Admin__4D94879B" Association="Self.FK__ADMINS__ID_Admin__4D94879B">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="ADMINS" EntitySet="ADMINS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADON__ID_Custo__5CD6CB2B" Association="Self.FK__HOADON__ID_Custo__5CD6CB2B">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="HOADON" EntitySet="HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SANPHAM__ID_HSX__2116E6DF" Association="Self.FK__SANPHAM__ID_HSX__2116E6DF">
+      <End Role="HANG_SX" EntitySet="HANG_SX" />
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SANPHAM__ID_LH__1F2E9E6D" Association="Self.FK__SANPHAM__ID_LH__1F2E9E6D">
+      <End Role="LOAIHANG" EntitySet="LOAIHANG" />
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SANPHAM__ID_NH__2022C2A6" Association="Self.FK__SANPHAM__ID_NH__2022C2A6">
+      <End Role="NHOMHANG" EntitySet="NHOMHANG" />
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHITIET_HOADON_HOADON" Association="Self.FK_CHITIET_HOADON_HOADON">
+      <End Role="HOADON" EntitySet="HOADON" />
+      <End Role="CHITIET_HOADON" EntitySet="CHITIET_HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHITIET_HOADON_SANPHAM" Association="Self.FK_CHITIET_HOADON_SANPHAM">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="CHITIET_HOADON" EntitySet="CHITIET_HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENTS_KHACHHANG" Association="Self.FK_CLIENTS_KHACHHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="CLIENTS" EntitySet="CLIENTS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

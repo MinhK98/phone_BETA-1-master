@@ -1,0 +1,621 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="phone_BETAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADMIN">
+    <Key>
+      <PropertyRef Name="ID_Admin" />
+    </Key>
+    <Property Name="ID_Admin" Type="Int32" Nullable="false" />
+    <Property Name="Log_Admin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__ADMINS__ID_Admin__4D94879B" FromRole="ADMINS" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="CHITIET_HOADON">
+    <Key>
+      <PropertyRef Name="ID_HD" />
+      <PropertyRef Name="ID_SP" />
+    </Key>
+    <Property Name="ID_HD" Type="Int32" Nullable="false" />
+    <Property Name="ID_SP" Type="Int32" Nullable="false" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="Price_CTHD" Type="Double" />
+    <NavigationProperty Name="HOADON" Relationship="Self.FK_CHITIET_HOADON_HOADON" FromRole="CHITIET_HOADON" ToRole="HOADON" />
+    <NavigationProperty Name="SANPHAM" Relationship="Self.FK_CHITIET_HOADON_SANPHAM" FromRole="CHITIET_HOADON" ToRole="SANPHAM" />
+    <Property Name="Name_SP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="HANG_SX">
+    <Key>
+      <PropertyRef Name="ID_HSX" />
+    </Key>
+    <Property Name="ID_HSX" Type="Int32" Nullable="false" />
+    <Property Name="Name_HSX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SANPHAMs" Relationship="phone_BETAModel.FK__SANPHAM__ID_HSX__2116E6DF" FromRole="HANG_SX" ToRole="SANPHAM" />
+  </EntityType>
+  <EntityType Name="HOADON">
+    <Key>
+      <PropertyRef Name="ID_HD" />
+    </Key>
+    <Property Name="ID_HD" Type="Int32" Nullable="false" />
+    <Property Name="Name_Customer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateCreate" Type="DateTime" Precision="0" />
+    <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ID_Customer" Type="Int32" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CHITIET_HOADON" Relationship="Self.FK_CHITIET_HOADON_HOADON" FromRole="HOADON" ToRole="CHITIET_HOADON" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HOADON__ID_Custo__5CD6CB2B" FromRole="HOADON" ToRole="KHACHHANG" />
+    <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TongTien" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="ID_Customer" />
+    </Key>
+    <Property Name="ID_Customer" Type="Int32" Nullable="false" />
+    <Property Name="Name_Customer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__ID_Custo__5CD6CB2B" FromRole="KHACHHANG" ToRole="HOADON" />
+    <NavigationProperty Name="CLIENT" Relationship="phone_BETAModel.FK_CLIENTS_KHACHHANG" FromRole="KHACHHANG" ToRole="CLIENT" />
+  </EntityType>
+  <EntityType Name="LOAIHANG">
+    <Key>
+      <PropertyRef Name="ID_LH" />
+    </Key>
+    <Property Name="ID_LH" Type="Int32" Nullable="false" />
+    <Property Name="Name_LH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SANPHAMs" Relationship="phone_BETAModel.FK__SANPHAM__ID_LH__1F2E9E6D" FromRole="LOAIHANG" ToRole="SANPHAM" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="ID_Admin" />
+    </Key>
+    <Property Name="ID_Admin" Type="Int32" Nullable="false" />
+    <Property Name="Name_Admin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+    <Property Name="DateOfWork" Type="DateTime" Precision="0" />
+    <Property Name="Salary" Type="Double" />
+    <NavigationProperty Name="ADMIN" Relationship="Self.FK__ADMINS__ID_Admin__4D94879B" FromRole="NHANVIEN" ToRole="ADMINS" />
+  </EntityType>
+  <EntityType Name="NHOMHANG">
+    <Key>
+      <PropertyRef Name="ID_NH" />
+    </Key>
+    <Property Name="ID_NH" Type="Int32" Nullable="false" />
+    <Property Name="Name_NH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SANPHAMs" Relationship="phone_BETAModel.FK__SANPHAM__ID_NH__2022C2A6" FromRole="NHOMHANG" ToRole="SANPHAM" />
+  </EntityType>
+  <EntityType Name="SANPHAM">
+    <Key>
+      <PropertyRef Name="ID_SP" />
+    </Key>
+    <Property Name="ID_SP" Type="Int32" Nullable="false" />
+    <Property Name="Name_SP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Price_SP" Type="Double" />
+    <Property Name="Year_SP" Type="Double" />
+    <Property Name="TraGop" Type="Double" />
+    <Property Name="TinhTrang" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PhuKien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CHITIET_HOADON" Relationship="Self.FK_CHITIET_HOADON_SANPHAM" FromRole="SANPHAM" ToRole="CHITIET_HOADON" />
+    <Property Name="ID_NH" Type="Int32" />
+    <Property Name="ID_LH" Type="Int32" />
+    <Property Name="ID_HSX" Type="Int32" />
+    <NavigationProperty Name="HANG_SX" Relationship="phone_BETAModel.FK__SANPHAM__ID_HSX__2116E6DF" FromRole="SANPHAM" ToRole="HANG_SX" />
+    <NavigationProperty Name="LOAIHANG" Relationship="phone_BETAModel.FK__SANPHAM__ID_LH__1F2E9E6D" FromRole="SANPHAM" ToRole="LOAIHANG" />
+    <NavigationProperty Name="NHOMHANG" Relationship="phone_BETAModel.FK__SANPHAM__ID_NH__2022C2A6" FromRole="SANPHAM" ToRole="NHOMHANG" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__ADMINS__ID_Admin__4D94879B">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+    <End Role="ADMINS" Type="Self.ADMIN" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="ID_Admin" />
+      </Principal>
+      <Dependent Role="ADMINS">
+        <PropertyRef Name="ID_Admin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHITIET_HOADON_HOADON">
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
+    <End Role="CHITIET_HOADON" Type="Self.CHITIET_HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADON">
+        <PropertyRef Name="ID_HD" />
+      </Principal>
+      <Dependent Role="CHITIET_HOADON">
+        <PropertyRef Name="ID_HD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHITIET_HOADON_SANPHAM">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="CHITIET_HOADON" Type="Self.CHITIET_HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="ID_SP" />
+      </Principal>
+      <Dependent Role="CHITIET_HOADON">
+        <PropertyRef Name="ID_SP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADON__ID_Custo__5CD6CB2B">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="ID_Customer" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="ID_Customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="phone_BETAEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADMINS" EntityType="Self.ADMIN" />
+    <EntitySet Name="CHITIET_HOADON" EntityType="Self.CHITIET_HOADON" />
+    <EntitySet Name="HANG_SX" EntityType="Self.HANG_SX" />
+    <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
+    <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+    <EntitySet Name="LOAIHANGs" EntityType="Self.LOAIHANG" />
+    <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+    <EntitySet Name="NHOMHANGs" EntityType="Self.NHOMHANG" />
+    <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__ADMINS__ID_Admin__4D94879B" Association="Self.FK__ADMINS__ID_Admin__4D94879B">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="ADMINS" EntitySet="ADMINS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHITIET_HOADON_HOADON" Association="Self.FK_CHITIET_HOADON_HOADON">
+      <End Role="HOADON" EntitySet="HOADONs" />
+      <End Role="CHITIET_HOADON" EntitySet="CHITIET_HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHITIET_HOADON_SANPHAM" Association="Self.FK_CHITIET_HOADON_SANPHAM">
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+      <End Role="CHITIET_HOADON" EntitySet="CHITIET_HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADON__ID_Custo__5CD6CB2B" Association="Self.FK__HOADON__ID_Custo__5CD6CB2B">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="HOADON" EntitySet="HOADONs" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(phone_BETAModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(phone_BETAModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="CLIENTS" EntityType="phone_BETAModel.CLIENT" />
+    <AssociationSet Name="FK_CLIENTS_KHACHHANG" Association="phone_BETAModel.FK_CLIENTS_KHACHHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="CLIENT" EntitySet="CLIENTS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SANPHAM__ID_HSX__2116E6DF" Association="phone_BETAModel.FK__SANPHAM__ID_HSX__2116E6DF">
+      <End Role="HANG_SX" EntitySet="HANG_SX" />
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SANPHAM__ID_LH__1F2E9E6D" Association="phone_BETAModel.FK__SANPHAM__ID_LH__1F2E9E6D">
+      <End Role="LOAIHANG" EntitySet="LOAIHANGs" />
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SANPHAM__ID_NH__2022C2A6" Association="phone_BETAModel.FK__SANPHAM__ID_NH__2022C2A6">
+      <End Role="NHOMHANG" EntitySet="NHOMHANGs" />
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+    </AssociationSet>
+    <FunctionImport Name="Huy_HoaDon">
+      <Parameter Name="ID_HD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="KhachHang_SearchKhachHang" ReturnType="Collection(phone_BETAModel.KhachHang_SearchKhachHang_Result)">
+      <Parameter Name="Name_Customer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Xoa_SanPham">
+      <Parameter Name="ID_SP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="XoaTK_KHACHHANG">
+      <Parameter Name="ID_Customer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_Customers" EntitySet="KHACHHANGs" ReturnType="Collection(phone_BETAModel.KHACHHANG)">
+      <Parameter Name="Name_Customer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_Bills" EntitySet="HOADONs" ReturnType="Collection(phone_BETAModel.HOADON)">
+      <Parameter Name="Name_Customer" Mode="In" Type="String" />
+      <Parameter Name="DateCreate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_SearchHD" ReturnType="Collection(phone_BETAModel.HoaDon_SearchHD_Result)">
+      <Parameter Name="Name_Customer" Mode="In" Type="String" />
+      <Parameter Name="DateCreate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchHoaDon" EntitySet="HOADONs" ReturnType="Collection(phone_BETAModel.HOADON)">
+      <Parameter Name="Name_Customer" Mode="In" Type="String" />
+      <Parameter Name="DateCreate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_SearchHD_2" ReturnType="Collection(phone_BETAModel.HoaDon_SearchHD_2_Result)">
+      <Parameter Name="DateCreate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchHD_2" EntitySet="HOADONs" ReturnType="Collection(phone_BETAModel.HOADON)">
+      <Parameter Name="DateCreate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SanPham_Search" ReturnType="Collection(phone_BETAModel.SanPham_Search_Result)">
+      <Parameter Name="ID_NH" Mode="In" Type="Int32" />
+      <Parameter Name="ID_HSX" Mode="In" Type="Int32" />
+      <Parameter Name="ID_LH" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SanPham_SearchHSX" ReturnType="Collection(phone_BETAModel.SanPham_SearchHSX_Result)">
+      <Parameter Name="ID_HSX" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SanPham_SearchLH" ReturnType="Collection(phone_BETAModel.SanPham_SearchLH_Result)">
+      <Parameter Name="ID_LH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SanPham_SearchNH" ReturnType="Collection(phone_BETAModel.SanPham_SearchNH_Result)">
+      <Parameter Name="ID_NH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SanPham_SearchTenSP" ReturnType="Collection(phone_BETAModel.SanPham_SearchTenSP_Result)">
+      <Parameter Name="Name_SP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SanPham_SearchTinhTrang" ReturnType="Collection(phone_BETAModel.SanPham_SearchTinhTrang_Result)">
+      <Parameter Name="TinhTrang" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SanPham_Search_General" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="ID_NH" Mode="In" Type="Int32" />
+      <Parameter Name="ID_HSX" Mode="In" Type="Int32" />
+      <Parameter Name="ID_LH" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SanPham_Search_HangSX" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="ID_HSX" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SanPham_Search_LoaiHang" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="ID_LH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SanPham_Search_NH" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="ID_NH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SanPham_Search_TenSP" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="Name_SP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SanPham_Search_TinhTrang" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="TinhTrang" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SanPham_Search_3" ReturnType="Collection(phone_BETAModel.SanPham_Search_3_Result)">
+      <Parameter Name="ID_NH" Mode="In" Type="String" />
+      <Parameter Name="ID_HSX" Mode="In" Type="String" />
+      <Parameter Name="ID_LH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_SearchHD_3" ReturnType="Collection(phone_BETAModel.HoaDon_SearchHD_3_Result)">
+      <Parameter Name="Name_Customer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_SearchHoaDon" ReturnType="Collection(phone_BETAModel.HoaDon_SearchHoaDon_Result1)">
+      <Parameter Name="TinhTrang" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchHD_3" EntitySet="HOADONs" ReturnType="Collection(phone_BETAModel.HOADON)">
+      <Parameter Name="Name_Customer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_HD_1" EntitySet="HOADONs" ReturnType="Collection(phone_BETAModel.HOADON)">
+      <Parameter Name="TinhTrang" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_SP_3" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="ID_NH" Mode="In" Type="String" />
+      <Parameter Name="ID_HSX" Mode="In" Type="String" />
+      <Parameter Name="ID_LH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_SP_HSX" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="ID_HSX" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_SP_LH" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="ID_LH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_SP_NH" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="ID_NH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_SP_Name" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="Name_SP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Search_SP_TinhTrang" EntitySet="SANPHAMs" ReturnType="Collection(phone_BETAModel.SANPHAM)">
+      <Parameter Name="TinhTrang" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="XoaTK_NHANVIEN">
+      <Parameter Name="ID_Admin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ChiTietSanPham" ReturnType="Collection(phone_BETAModel.ChiTietSanPham_Result1)">
+      <Parameter Name="ID_SP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ChiTiet_SanPham" ReturnType="Collection(phone_BETAModel.ChiTietSanPham_Result1)">
+      <Parameter Name="ID_SP" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="CLIENT">
+    <Key>
+      <PropertyRef Name="ID_Customer" />
+    </Key>
+    <Property Name="ID_Customer" Type="Int32" Nullable="false" />
+    <Property Name="Log_Customer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KHACHHANG" Relationship="phone_BETAModel.FK_CLIENTS_KHACHHANG" FromRole="CLIENT" ToRole="KHACHHANG" />
+  </EntityType>
+  <Association Name="FK_CLIENTS_KHACHHANG">
+    <End Type="phone_BETAModel.KHACHHANG" Role="KHACHHANG" Multiplicity="1" />
+    <End Type="phone_BETAModel.CLIENT" Role="CLIENT" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="ID_Customer" />
+      </Principal>
+      <Dependent Role="CLIENT">
+        <PropertyRef Name="ID_Customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SANPHAM__ID_HSX__2116E6DF">
+    <End Type="phone_BETAModel.HANG_SX" Role="HANG_SX" Multiplicity="0..1" />
+    <End Type="phone_BETAModel.SANPHAM" Role="SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANG_SX">
+        <PropertyRef Name="ID_HSX" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="ID_HSX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SANPHAM__ID_LH__1F2E9E6D">
+    <End Type="phone_BETAModel.LOAIHANG" Role="LOAIHANG" Multiplicity="0..1" />
+    <End Type="phone_BETAModel.SANPHAM" Role="SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIHANG">
+        <PropertyRef Name="ID_LH" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="ID_LH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SANPHAM__ID_NH__2022C2A6">
+    <End Type="phone_BETAModel.NHOMHANG" Role="NHOMHANG" Multiplicity="0..1" />
+    <End Type="phone_BETAModel.SANPHAM" Role="SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHOMHANG">
+        <PropertyRef Name="ID_NH" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="ID_NH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="HoaDon_SearchHoaDon_Result">
+    <Property Type="Int32" Name="ID_HD" Nullable="false" />
+    <Property Type="String" Name="Name_Customer" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="DateCreate" Nullable="true" />
+    <Property Type="String" Name="SDT" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="ID_Customer" Nullable="true" />
+    <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TongTien" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="KhachHang_SearchKhachHang_Result">
+    <Property Type="Int32" Name="ID_Customer" Nullable="false" />
+    <Property Type="String" Name="Name_Customer" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Sex" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="HoaDon_SearchHD_Result">
+    <Property Type="Int32" Name="ID_HD" Nullable="false" />
+    <Property Type="String" Name="Name_Customer" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="DateCreate" Nullable="true" />
+    <Property Type="String" Name="SDT" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="ID_Customer" Nullable="true" />
+    <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TongTien" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="HoaDon_SearchHD_2_Result">
+    <Property Type="Int32" Name="ID_HD" Nullable="false" />
+    <Property Type="String" Name="Name_Customer" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="DateCreate" Nullable="true" />
+    <Property Type="String" Name="SDT" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="ID_Customer" Nullable="true" />
+    <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TongTien" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="SanPham_Search_Result">
+    <Property Type="Int32" Name="ID_SP" Nullable="false" />
+    <Property Type="String" Name="Name_SP" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Price_SP" Nullable="true" />
+    <Property Type="Double" Name="Year_SP" Nullable="true" />
+    <Property Type="Double" Name="TraGop" Nullable="true" />
+    <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="PhuKien" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Photo" Nullable="true" />
+    <Property Type="Int32" Name="ID_NH" Nullable="true" />
+    <Property Type="Int32" Name="ID_LH" Nullable="true" />
+    <Property Type="Int32" Name="ID_HSX" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SanPham_SearchHSX_Result">
+    <Property Type="Int32" Name="ID_SP" Nullable="false" />
+    <Property Type="String" Name="Name_SP" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Price_SP" Nullable="true" />
+    <Property Type="Double" Name="Year_SP" Nullable="true" />
+    <Property Type="Double" Name="TraGop" Nullable="true" />
+    <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="PhuKien" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Photo" Nullable="true" />
+    <Property Type="Int32" Name="ID_NH" Nullable="true" />
+    <Property Type="Int32" Name="ID_LH" Nullable="true" />
+    <Property Type="Int32" Name="ID_HSX" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SanPham_SearchLH_Result">
+    <Property Type="Int32" Name="ID_SP" Nullable="false" />
+    <Property Type="String" Name="Name_SP" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Price_SP" Nullable="true" />
+    <Property Type="Double" Name="Year_SP" Nullable="true" />
+    <Property Type="Double" Name="TraGop" Nullable="true" />
+    <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="PhuKien" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Photo" Nullable="true" />
+    <Property Type="Int32" Name="ID_NH" Nullable="true" />
+    <Property Type="Int32" Name="ID_LH" Nullable="true" />
+    <Property Type="Int32" Name="ID_HSX" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SanPham_SearchNH_Result">
+    <Property Type="Int32" Name="ID_SP" Nullable="false" />
+    <Property Type="String" Name="Name_SP" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Price_SP" Nullable="true" />
+    <Property Type="Double" Name="Year_SP" Nullable="true" />
+    <Property Type="Double" Name="TraGop" Nullable="true" />
+    <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="PhuKien" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Photo" Nullable="true" />
+    <Property Type="Int32" Name="ID_NH" Nullable="true" />
+    <Property Type="Int32" Name="ID_LH" Nullable="true" />
+    <Property Type="Int32" Name="ID_HSX" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SanPham_SearchTenSP_Result">
+    <Property Type="Int32" Name="ID_SP" Nullable="false" />
+    <Property Type="String" Name="Name_SP" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Price_SP" Nullable="true" />
+    <Property Type="Double" Name="Year_SP" Nullable="true" />
+    <Property Type="Double" Name="TraGop" Nullable="true" />
+    <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="PhuKien" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Photo" Nullable="true" />
+    <Property Type="Int32" Name="ID_NH" Nullable="true" />
+    <Property Type="Int32" Name="ID_LH" Nullable="true" />
+    <Property Type="Int32" Name="ID_HSX" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SanPham_SearchTinhTrang_Result">
+    <Property Type="Int32" Name="ID_SP" Nullable="false" />
+    <Property Type="String" Name="Name_SP" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Price_SP" Nullable="true" />
+    <Property Type="Double" Name="Year_SP" Nullable="true" />
+    <Property Type="Double" Name="TraGop" Nullable="true" />
+    <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="PhuKien" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Photo" Nullable="true" />
+    <Property Type="Int32" Name="ID_NH" Nullable="true" />
+    <Property Type="Int32" Name="ID_LH" Nullable="true" />
+    <Property Type="Int32" Name="ID_HSX" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SanPham_Search_3_Result">
+    <Property Type="Int32" Name="ID_SP" Nullable="false" />
+    <Property Type="String" Name="Name_SP" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Price_SP" Nullable="true" />
+    <Property Type="Double" Name="Year_SP" Nullable="true" />
+    <Property Type="Double" Name="TraGop" Nullable="true" />
+    <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="PhuKien" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Photo" Nullable="true" />
+    <Property Type="Int32" Name="ID_NH" Nullable="true" />
+    <Property Type="Int32" Name="ID_LH" Nullable="true" />
+    <Property Type="Int32" Name="ID_HSX" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="HoaDon_SearchHD_3_Result">
+    <Property Type="Int32" Name="ID_HD" Nullable="false" />
+    <Property Type="String" Name="Name_Customer" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="DateCreate" Nullable="true" />
+    <Property Type="String" Name="SDT" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="ID_Customer" Nullable="true" />
+    <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TongTien" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="HoaDon_SearchHoaDon_Result1">
+    <Property Type="Int32" Name="ID_HD" Nullable="false" />
+    <Property Type="String" Name="Name_Customer" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="DateCreate" Nullable="true" />
+    <Property Type="String" Name="SDT" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="ID_Customer" Nullable="true" />
+    <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TinhTrang" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TongTien" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="SanPham_ChiTietSanPham_Result">
+    <Property Type="Int32" Name="Mã_sản_phẩm" Nullable="false" />
+    <Property Type="String" Name="Tên_sản_phẩm" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Giá_sản_phẩm" Nullable="true" />
+    <Property Type="Double" Name="Giá_sản_xuất" Nullable="true" />
+    <Property Type="Double" Name="Trả_góp" Nullable="true" />
+    <Property Type="String" Name="Tình_trạng" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Phụ_kiện" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Hãng_sản_suất" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Loại_hàng" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Nhóm_hàng" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ChiTietSanPham_Result">
+    <Property Type="Int32" Name="Mã_sản_phẩm" Nullable="false" />
+    <Property Type="String" Name="Tên_sản_phẩm" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Giá_sản_phẩm" Nullable="true" />
+    <Property Type="Double" Name="Năm_sản_xuất" Nullable="true" />
+    <Property Type="Double" Name="Trả_góp" Nullable="true" />
+    <Property Type="String" Name="Tình_trạng" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Phụ_kiện" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ảnh" Nullable="true" />
+    <Property Type="String" Name="Hãng_sản_suất" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Loại_hàng" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Nhóm_hàng" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ChiTietSanPham_Result1">
+    <Property Type="Int32" Name="Mã_sản_phẩm" Nullable="false" />
+    <Property Type="String" Name="Tên_sản_phẩm" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Giá_sản_phẩm" Nullable="true" />
+    <Property Type="Double" Name="Năm_sản_xuất" Nullable="true" />
+    <Property Type="Double" Name="Trả_góp" Nullable="true" />
+    <Property Type="String" Name="Tình_trạng" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Phụ_kiện" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ảnh" Nullable="true" />
+    <Property Type="String" Name="Hãng_sản_suất" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Loại_hàng" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Nhóm_hàng" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

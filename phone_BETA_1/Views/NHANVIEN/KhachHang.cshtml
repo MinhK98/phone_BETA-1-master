@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "KhachHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title> Danh sách khách hàng </title>
+</head>
+<body>
+    @using (Html.BeginForm("KhachHang", "NHANVIEN", FormMethod.Post))
+    {
+        <span>Customer Name:</span> @Html.TextBox("NameCustomer")
+        <input type="submit" value="Tìm kiếm" />
+        <br />
+        <br />
+        <table cellpadding="0" cellspacing="0" class="table">
+            <tr>
+                <th> Mã khách hàng </th>
+                <th> Tên khách hàng </th>
+                <th> Giới tính </th>
+                <th> Số điện thoại </th>
+                <th> Ngày sinh </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID_Customer</td>
+                    <td>@item.Name_Customer</td>
+                    <td>@item.Sex</td>
+                    <td>@item.Phone</td>
+                    <td>@item.DateOfBirth</td>
+                    <td>
+                        @Html.ActionLink("Chi tiết", "ChiTietKhachHang", new { id = item.ID_Customer })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</body>
+</html>
+
