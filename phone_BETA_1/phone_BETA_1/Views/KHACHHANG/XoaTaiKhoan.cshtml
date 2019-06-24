@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "XoaTaiKhoan";
+    Layout = "~/Views/Shared/_Layout_3.cshtml";
+}
+
+<h2> XÓA THÔNG TIN TÀI KHOẢN! Việc này sẽ xóa luôn cả lịch sử mua hàng của bạn. Sẵn sàng để xóa? </h2>
+
+@using (Html.BeginForm("XoaTaiKhoan", "KHACHHANG", FormMethod.Post))
+{
+    <div class="form-actions no-color">
+        <input style="visibility: hidden;" name="id_customer" value= @Session["ID_Customer"] readonly/>  
+        <br>
+        <input type="submit" value="Xóa" class="btn btn-default" name="Xóa" /> 
+    </div>
+}
+

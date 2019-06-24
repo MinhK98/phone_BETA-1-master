@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" charset="utf-8"/>
+    <title> Trang chủ </title>
+</head>
+<body>
+    <p> TÊN ĐĂNG NHẬP: @Session["Log_Customer"] </p>
+    <p style="visibility: hidden;"> MÃ KHÁCH HÀNG: @Session["ID_Customer"] </p>
+    <p><a href="@Url.Action("SignIn","CLIENT")"> Đăng nhập </a></p>
+    <p> HÔM NAY, NGÀY @DateTime.Now.ToString("dd-MM-yyyy") </p>
+    <br>
+    @using (Html.BeginForm("TimKiemSanPham_HSX", "Home", FormMethod.Post))
+    {
+        <div>
+            <button value="1" id="HangSX" name="HangSX"> Apple </button>
+            <button value="12" id="HangSX" name="HangSX"> Logitech </button>
+            <button value="8" id="HangSX" name="HangSX"> Xiaomi </button>
+        </div>
+    }
+    @using (Html.BeginForm("TimKiemSanPham_NhomHang", "Home", FormMethod.Post))
+    {
+        <div>
+            <button value="1" id="NhomHang" name="NhomHang"> Tầm trung </button>
+            <button value="2" id="NhomHang" name="NhomHang"> Giá rẻ </button>
+            <button value="3" id="NhomHang" name="NhomHang"> Cao cấp </button>
+        </div>
+    }
+    @using (Html.BeginForm("TimKiemSanPham_LoaiHang", "Home", FormMethod.Post))
+    {
+        <div>
+            <button value="1" id="LoaiHang" name="LoaiHang"> Điện thoại </button>
+            <button value="2" id="LoaiHang" name="LoaiHang"> Máy tính </button>
+            <button value="4" id="LoaiHang" name="LoaiHang"> Phụ kiện khác </button>
+        </div>
+    }
+    <br>
+    @using (Html.BeginForm("TimKiemSanPham_TenSP", "Home", FormMethod.Post))
+    {
+        <span> Tên sản phẩm:</span> @Html.TextBox("Name_SP")
+        <input type="submit" value="Tìm kiếm" />
+    }
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

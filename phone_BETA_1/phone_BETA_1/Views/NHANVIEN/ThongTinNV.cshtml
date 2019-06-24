@@ -1,0 +1,58 @@
+﻿@model phone_BETA_1.Models.NHANVIEN
+
+@{
+    ViewBag.Title = "ThongTinNV";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4>NHANVIEN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_Admin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_Admin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfWork)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfWork)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa thông tin", "SuaThongTin", new {  id = Model.ID_Admin  }) |
+    <a href="@Url.Action("Edit", "ADMIN", new { id = Model.ID_Admin })"> Đổi mật khẩu </a>
+</p>
