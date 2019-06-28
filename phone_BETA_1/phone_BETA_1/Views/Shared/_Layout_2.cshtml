@@ -1,48 +1,809 @@
 ﻿<!DOCTYPE html>
+<html lang="zxx">
 
-<html>
 <head>
-    <meta name="viewport" content="width=device-width" charset="utf-8"/>
-    <title> Trang chủ </title>
+    <title> Shopping Công nghệ </title>
+    <!--/tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!--//tags -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet">
+    <!--pop-up-box-->
+    <link href="~/Content/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//pop-up-box-->
+    <!-- price range -->
+    <link rel="stylesheet" type="text/css" href="~/Content/jquery-ui1.css">
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+
+    <!-- styles button -->
+    <style>
+    .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 8px 18px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        -webkit-transition-duration: 0.4s; 
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+    .button2 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #008CBA;
+    }
+
+    .button2:hover {
+        background-color: #008CBA;
+        color: white;
+    }
+    .button3 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #f44336;
+    }
+
+    .button3:hover {
+        background-color: #f44336;
+        color: white;
+    }
+    .button1 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #4CAF50;
+}
+
+    .button1:hover {
+        background-color: #4CAF50;
+        color: white;
+    }
+    </style>
 </head>
+
 <body>
-    <p> TÊN ĐĂNG NHẬP: @Session["Log_Customer"] </p>
-    <p style="visibility: hidden;"> MÃ KHÁCH HÀNG: @Session["ID_Customer"] </p>
-    <p><a href="@Url.Action("SignIn","CLIENT")"> Đăng nhập </a></p>
-    <p> HÔM NAY, NGÀY @DateTime.Now.ToString("dd-MM-yyyy") </p>
-    <br>
-    @using (Html.BeginForm("TimKiemSanPham_HSX", "Home", FormMethod.Post))
-    {
-        <div>
-            <button value="1" id="HangSX" name="HangSX"> Apple </button>
-            <button value="12" id="HangSX" name="HangSX"> Logitech </button>
-            <button value="8" id="HangSX" name="HangSX"> Xiaomi </button>
-        </div>
-    }
-    @using (Html.BeginForm("TimKiemSanPham_NhomHang", "Home", FormMethod.Post))
-    {
-        <div>
-            <button value="1" id="NhomHang" name="NhomHang"> Tầm trung </button>
-            <button value="2" id="NhomHang" name="NhomHang"> Giá rẻ </button>
-            <button value="3" id="NhomHang" name="NhomHang"> Cao cấp </button>
-        </div>
-    }
-    @using (Html.BeginForm("TimKiemSanPham_LoaiHang", "Home", FormMethod.Post))
-    {
-        <div>
-            <button value="1" id="LoaiHang" name="LoaiHang"> Điện thoại </button>
-            <button value="2" id="LoaiHang" name="LoaiHang"> Máy tính </button>
-            <button value="4" id="LoaiHang" name="LoaiHang"> Phụ kiện khác </button>
-        </div>
-    }
-    <br>
-    @using (Html.BeginForm("TimKiemSanPham_TenSP", "Home", FormMethod.Post))
-    {
-        <span> Tên sản phẩm:</span> @Html.TextBox("Name_SP")
-        <input type="submit" value="Tìm kiếm" />
-    }
-    <div>
-        @RenderBody()
+    <!-- top-header -->
+    <div class="header-most-top">
+        <p> Shopping Công nghệ ưu đãi 40% giá sản phẩm đến hết tháng 7. Hãy đăng ký ngay!!! </p>
     </div>
+    <!-- //top-header -->
+    <!-- header-bot-->
+    <div class="header-bot">
+        <div class="header-bot_inner_wthreeinfo_header_mid">
+            <!-- header-bot-->
+            <div class="col-md-4 logo_agile">
+                <h1>
+                    <a href="@Url.Action("Index","Home")">
+                        <span>S</span>hopping
+                        <span>C</span>ông nghệ
+                        <img src="~/Content/logo2.png" alt=" ">
+                    </a>
+                </h1>
+            </div>
+            <!-- header-bot -->
+            <div class="col-md-8 header">
+                <!-- header lists -->
+                <ul>
+                    <li>
+                        <a href="@Url.Action("SignIn","CLIENT")" data-toggle="modal">
+                            <span class="fa fa-unlock-alt" aria-hidden="true"></span> Đăng nhập
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("SignUp","CLIENT")" data-toggle="modal">
+                            <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Đăng ký
+                        </a>
+                    </li>
+                </ul>
+                <!-- //header lists -->
+                <!-- search -->
+                <div class="agileits_search">
+                    @using (Html.BeginForm("TimKiemSanPham_TenSP", "Home", FormMethod.Post))
+                    {
+                        <input name="Name_SP" id="Name_SP" type="search" placeholder="Tìm kiếm sản phẩm" required>
+                        <button type="submit" class="btn btn-default" aria-label="Left Align">
+                            <span class="fa fa-search" aria-hidden="true"> </span>
+                        </button>
+                    }
+                </div>
+                <!-- //search -->
+                <!-- cart details -->
+                <div class="top_nav_right">
+                    <div class="wthreecartaits wthreecartaits2 cart cart box_1">
+                        <form action="" method="post" class="last">
+                            <input type="hidden" name="cmd" value="_cart">
+                            <input type="hidden" name="display" value="1">
+                            <button class="w3view-cart" type="submit" name="submit" value="">
+                                <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <!-- //cart details -->
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- navigation -->
+    <div class="ban-top">
+        <div class="container">
+            <div class="top_nav_left">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                                    aria-expanded="false">
+                                <span class="sr-only"> Cử chỉ điều hướng </span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav menu__list">
+                                <li class="active">
+                                    <a class="nav-stylehead" href="">
+                                        Trang chủ
+                                        <span class="sr-only">(hiện tại)</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a class="nav-stylehead" href=""> Giới thiệu </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Phân khúc
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu multi-column columns-3">
+                                        <div class="agile_inner_drop_nav_info">
+                                            <div class="col-sm-4 multi-gd-img">
+                                                <ul class="multi-column-dropdown">
+                                                    @using (Html.BeginForm("TimKiemSanPham_NhomHang", "Home", FormMethod.Post))
+                                                    {
+                                                        <li>
+                                                            <button class="button button1" value="1" id="NhomHang" name="NhomHang"> Tầm trung </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button1" value="2" id="NhomHang" name="NhomHang"> Giá rẻ </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button1" value="3" id="NhomHang" name="NhomHang"> Cao cấp </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button1" value="4" id="NhomHang" name="NhomHang"> Cận cao cấp </button>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4 multi-gd-img">
+                                                @using (Html.BeginForm("TimKiemSanPham_NhomHang", "Home", FormMethod.Post))
+                                                {
+                                                    <li>
+                                                        <button class="button button1" value="5" id="NhomHang" name="NhomHang"> Tân trang </button>
+                                                    </li>
+                                                    <li>
+                                                        <button class="button button1" value="6" id="NhomHang" name="NhomHang"> Xách tay </button>
+                                                    </li>
+                                                    <li>
+                                                        <button class="button button1" value="7" id="NhomHang" name="NhomHang"> Hàng cũ </button>
+                                                    </li>
+                                                }
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a class="nav-stylehead dropdown-toggle" href="" data-toggle="dropdown">
+                                        Hãng sản xuất
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu multi-column columns-3">
+                                        <div class="agile_inner_drop_nav_info">
+                                            <div class="col-sm-4 multi-gd-img">
+                                                <ul class="multi-column-dropdown">
+                                                    @using (Html.BeginForm("TimKiemSanPham_HSX", "Home", FormMethod.Post))
+                                                    {
+                                                        <li>
+                                                            <button class="button button3" value="1" id="HangSX" name="HangSX"> Apple </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button3" value="2" id="HangSX" name="HangSX"> Microsof </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button3" value="3" id="HangSX" name="HangSX"> Google </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button3" value="4" id="HangSX" name="HangSX"> Dell </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button3" value="5" id="HangSX" name="HangSX"> Acer </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button3" value="6" id="HangSX" name="HangSX"> Asus </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button3" value="14" id="HangSX" name="HangSX"> Intel </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button3" value="15" id="HangSX" name="HangSX"> Sony </button>
+                                                        </li>
+
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4 multi-gd-img">
+                                                <ul class="multi-column-dropdown">
+                                                    @using (Html.BeginForm("TimKiemSanPham_HSX", "Home", FormMethod.Post))
+                                                    {
+                                                        <li>
+                                                            <button class="button button3" value="7" id="HangSX" name="HangSX"> Samsung </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button3" value="8" id="HangSX" name="HangSX"> Xiaomi </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button3" value="9" id="HangSX" name="HangSX"> Oppo </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button3" value="10" id="HangSX" name="HangSX"> Nokia </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button3" value="11" id="HangSX" name="HangSX"> Vivo </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button3" value="12" id="HangSX" name="HangSX"> Logitech </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button3" value="16" id="HangSX" name="HangSX"> CD Projekt RED </button>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a class="nav-stylehead dropdown-toggle" href="" data-toggle="dropdown">
+                                        Loại hàng
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu multi-column columns-3">
+                                        <div class="agile_inner_drop_nav_info">
+                                            <div class="col-sm-4 multi-gd-img">
+                                                <ul class="multi-column-dropdown">
+                                                    @using (Html.BeginForm("TimKiemSanPham_LoaiHang", "Home", FormMethod.Post))
+                                                    {
+                                                        <li>
+                                                            <button class="button button2" value="2" id="LoaiHang" name="LoaiHang"> Máy tính </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button2" value="1" id="LoaiHang" name="LoaiHang"> Điện thoại </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button2" value="3" id="LoaiHang" name="LoaiHang"> Tai nghe </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button2" value="4" id="LoaiHang" name="LoaiHang"> Phụ kiện khác </button>
+                                                        </li>
+                                                        <li>
+                                                            <button class="button button2" value="7" id="LoaiHang" name="LoaiHang"> Game </button>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li class="">
+                                    <a class="nav-stylehead" href="@Url.Action("HoaDon", "KHACHHANG", new { id = Session["ID_Customer"] })"> Xin chào: @Session["Log_Customer"] </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- //navigation -->
+    <!-- banner -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators-->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+            <li data-target="#myCarousel" data-slide-to="3" class=""></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <a class="button2" href="@Url.Action("Details", "Home", new {  id = 35 })"> Mua ngay </a>
+                    </div>
+                </div>
+            </div>
+            <div class="item item2">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <a class="button2" href="@Url.Action("Details", "Home", new {  id = 36 })"> Mua ngay </a>
+                    </div>
+                </div>
+            </div>
+            <div class="item item3">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <a class="button2" href="@Url.Action("Details", "Home", new {  id = 38 })"> Đặt hàng ngay </a>
+                    </div>
+                </div>
+            </div>
+            <div class="item item4">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <a class="button2" href="@Url.Action("Details", "Home", new {  id = 37 })"> Mua ngay </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //banner -->
+    <!-- top Products -->
+    <div class="ads-grid">
+        <div class="container">
+            <!-- tittle heading -->
+            <h3 class="tittle-w3l">
+                Top sản phẩm bán chạy nhất
+                <span class="heading-style">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </span>
+            </h3>
+            <!-- //tittle heading -->
+            <!-- product left -->
+            <div class="side-bar col-md-3">
+                <div class="search-hotel">
+                    <h3 class="agileits-sear-head">Tìm kiếm</h3>
+                    @using (Html.BeginForm("TimKiemSanPham_TenSP", "Home", FormMethod.Post))
+                    {
+                        <input type="search" placeholder="Tên sản phẩm..." name="Name_SP" id="Name_SP" required="">
+                        <button type="submit" class="btn btn-default" aria-label="Left Align">
+                            <span class="fa fa-search" aria-hidden="true"> </span>
+                        </button>
+                    }
+                </div>
+                <!-- deals -->
+                <div class="deal-leftmk left-side">
+                    <h3 class="agileits-sear-head"> Ưu đãi đặc biệt </h3>
+                    <div class="special-sec1">
+                        <div class="col-xs-4 img-deals">
+                            <img style="object-fit: cover;" src="~/Content/iphone-xs.jpg" alt="" width="70" height="70">
+                        </div>
+                        <div class="col-xs-8 img-deal1">
+                            <h3> iPhone Xs Max </h3>
+                            <del> 35000000 VNĐ </del>
+                            <a href="@Url.Action("Details", "Home", new {  id = 1 })"> 23000000 VNĐ </a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="special-sec1">
+                        <div class="col-xs-4 img-deals">
+                            <img style="object-fit: cover;" src="~/Content/iphone-xr.jpg" alt="" width="70" height="70">
+                        </div>
+                        <div class="col-xs-8 img-deal1">
+                            <h3> iPhone Xr (Product RED) </h3>
+                            <del> 18000000 VNĐ </del>
+                            <a href="@Url.Action("Details", "Home", new {  id  = 29 })"> 12000000 VNĐ </a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="special-sec1">
+                        <div class="col-xs-4 img-deals">
+                            <img style="object-fit: cover;" src="~/Content/xbox.jpg" alt="" width="70" height="70">
+                        </div>
+                        <div class="col-xs-8 img-deal1">
+                            <h3> Tay cầm Xbox One S </h3>
+                            <del> 3500000 VNĐ </del>
+                            <a href="@Url.Action("Details", "Home", new {  id = 30 })"> 1200000 VNĐ </a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="special-sec1">
+                        <div class="col-xs-4 img-deals">
+                            <img style="object-fit: cover;" src="~/Content/galaxy-buds.jpg" alt="" width="70" height="70">
+                        </div>
+                        <div class="col-xs-8 img-deal1">
+                            <h3> Tai nghe Samsung Buds (Chính hãng) </h3>
+                            <del> 2590000 VNĐ </del>
+                            <a href="@Url.Action("Details", "Home", new {  id = 33 })"> 1150000 VNĐ </a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="special-sec1">
+                        <div class="col-xs-4 img-deals">
+                            <img style="object-fit: cover;" src="~/Content/PS4-Pro.jpg" alt="" width="70" height="70">
+                        </div>
+                        <div class="col-xs-8 img-deal1">
+                            <h3> PS4 Pro 2TB (Chính hãng) </h3>
+                            <del> 11990000 VNĐ </del>
+                            <a href="@Url.Action("Details", "Home", new {  id = 34 })"> 9990000 VNĐ </a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <!-- //deals -->
+            </div>
+            <!-- product right -->
+            <div class="agileinfo-ads-display col-md-9">
+                <div class="wrapper">
+                    <div class="product-sec1">
+                        @RenderBody()
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- //product right -->
+        </div>
+    </div>
+    <!-- //top products -->
+    <!-- newsletter -->
+    <div class="footer-top">
+        <div class="container-fluid">
+            <div class="col-xs-8 agile-leftmk">
+                <h2> Đăng ký email để cập nhật những ưu đãi hot từ phía chúng tôi </h2>
+                <p> Miễn phí 100% phí vận chuyển cho 1000 khách hàng đăng ký nhanh nhất! </p>
+                <form action="" method="post">
+                    <input type="email" placeholder="Email" name="email" required="">
+                    <input type="submit" onclick="myFunction()" value="Đăng ký">
+                </form>
+                <div class="newsform-w3l">
+                    <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-xs-4 w3l-rightmk">
+                <img src="~/Content/tab3.png" alt=" ">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //newsletter -->
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="w3l-grids-footer">
+                <div class="col-xs-4 offer-footer">
+                    <div class="col-xs-4 icon-fot">
+                        <span class="fa fa-map-marker" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-xs-8 text-form-footer">
+                        <h3> Phục vụ tận tình 24/24 </h3>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-xs-4 offer-footer">
+                    <div class="col-xs-4 icon-fot">
+                        <span class="fa fa-refresh" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-xs-8 text-form-footer">
+                        <h3> Hoàn trả 100% nếu có sự cố </h3>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-xs-4 offer-footer">
+                    <div class="col-xs-4 icon-fot">
+                        <span class="fa fa-times" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-xs-8 text-form-footer">
+                        <h3> Nói không với hàng giả, hàng nhái </h3>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- //footer second section -->
+            <!-- footer third section -->
+            <div class="footer-info w3-agileits-info">
+                <!-- footer categories -->
+                <div class="col-sm-5 address-right">
+                    <div class="col-xs-6 footer-grids">
+                        <h3> Tin tức </h3>
+                        <ul>
+                            <li>
+                                <a href=""> Tin tuyển dụng </a>
+                            </li>
+                            <li>
+                                <a href=""> Tin khuyến mãi </a>
+                            </li>
+                            <li>
+                                <a href=""> Hướng dẫn mua online </a>
+                            </li>
+                            <li>
+                                <a href=""> Hướng dẫn mua trả góp </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 footer-grids">
+                        <h3> Chính sách </h3>
+                        <ul>
+                            <li>
+                                <a href=""> Hệ thống cửa hàng </a>
+                            </li>
+                            <li>
+                                <a href=""> Hệ thống bảo hành </a>
+                            </li>
+                            <li>
+                                <a href=""> Kiểm tra hàng Apple chính hãng </a>
+                            </li>
+                            <li>
+                                <a href=""> Giới thiệu máy đổi trả </a>
+                            </li>
+                            <li>
+                                <a href=""> Chính sách đổi trả </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- //footer categories -->
+                <!-- quick links -->
+                <div class="col-sm-5 address-right">
+                    <div class="col-xs-6 footer-grids">
+                        <h3> Thông tin thêm </h3>
+                        <ul>
+                            <li>
+                                <a href=""> Giới thiệu </a>
+                            </li>
+                            <li>
+                                <a href=""> Liên hệ </a>
+                            </li>
+                            <li>
+                                <a href=""> Trợ giúp </a>
+                            </li>
+                            <li>
+                                <a href=""> Hỏi đáp </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 footer-grids">
+                        <h3> Liên hệ với chúng tôi </h3>
+                        <ul>
+                            <li>
+                                <i class="fa fa-map-marker"></i> 236 Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội
+                            </li>
+                            <li>
+                                <i class="fa fa-mobile"></i> 990 0207 720
+                            </li>
+                            <li>
+                                <i class="fa fa-phone"></i> 069.515200
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope-o"></i>
+                                <a href="mailto:example@mail.com"> info@mta.edu.vn </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- //quick links -->
+                <!-- social icons -->
+                <div class="col-sm-2 footer-grids  w3l-socialmk">
+                    <h3> Theo dõi chúng tôi tại </h3>
+                    <div class="social">
+                        <ul>
+                            <li>
+                                <a class="icon fb" href="">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="icon tw" href="">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="icon gp" href="">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- //social icons -->
+                <div class="clearfix"></div>
+            </div>
+            <!-- //footer third section -->
+        </div>
+    </footer>
+    <!-- //footer -->
+    <!-- copyright -->
+    <div class="copy-right">
+        <div class="container">
+            <p>
+                © 2019 Shopping Công nghệ - Bảo lưu bản quyền
+            </p>
+        </div>
+    </div>
+    <!-- //copyright -->
+    <!-- js-files -->
+    <!-- jquery -->
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <!-- //jquery -->
+    <!-- popup modal (for signin & signup)-->
+    <script src="~/Scripts/jquery.magnific-popup.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+        });
+    </script>
+    <!-- Large modal -->
+    <!-- <script>
+        $('#').modal('show');
+    </script> -->
+    <!-- //popup modal (for signin & signup)-->
+    <!-- cart-js -->
+    <script src="~/Scripts/minicart.js"></script>
+    <script>
+        paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
+
+        paypalm.minicartk.cart.on('checkout', function (evt) {
+            var items = this.items(),
+                len = items.length,
+                total = 0,
+                i;
+
+            // Count the number of each item in the cart
+            for (i = 0; i < len; i++) {
+                total += items[i].get('quantity');
+            }
+
+            if (total < 3) {
+                alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+                evt.preventDefault();
+            }
+        });
+    </script>
+    <!-- //cart-js -->
+    <!-- price range (top products) -->
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script>
+        //<![CDATA[
+        $(window).load(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 9000,
+                values: [50, 6000],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                }
+            });
+            $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+
+        }); //]]>
+    </script>
+    <!-- //price range (top products) -->
+    <!-- flexisel (for special offers) -->
+    <script src="~/Scripts/jquery.flexisel.js"></script>
+    <script>
+        $(window).load(function () {
+            $("#flexiselDemo1").flexisel({
+                visibleItems: 3,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 3000,
+                pauseOnHover: true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 2
+                    }
+                }
+            });
+
+        });
+    </script>
+    <!-- //flexisel (for special offers) -->
+    <!-- password-script -->
+    <script>
+        window.onload = function () {
+            document.getElementById("password1").onchange = validatePassword;
+            document.getElementById("password2").onchange = validatePassword;
+        }
+
+        function validatePassword() {
+            var pass2 = document.getElementById("password2").value;
+            var pass1 = document.getElementById("password1").value;
+            if (pass1 != pass2)
+                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+            else
+                document.getElementById("password2").setCustomValidity('');
+            //empty string means no validation error
+        }
+    </script>
+    <!-- //password-script -->
+    <!-- smoothscroll -->
+    <script src="~/Scripts/SmoothScroll.min.js"></script>
+    <!-- //smoothscroll -->
+    <!-- start-smooth-scrolling -->
+    <script src="~/Scripts/move-top.js"></script>
+    <script src="~/Scripts/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+    <!-- smooth-scrolling-of-move-up -->
+    <script>
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            */
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <script>
+        function myFunction() {
+            alert("Đăng ký thành công. Chúng tôi rất vui khi liên hệ lại với bạn.");
+        }
+    </script>
+    <!-- //smooth-scrolling-of-move-up -->
+    <!-- for bootstrap working -->
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- //js-files -->
 </body>
 </html>

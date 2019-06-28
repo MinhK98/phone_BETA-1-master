@@ -5,15 +5,16 @@
 }
 
 <h2> Hủy hóa đơn ngay! Bạn có chắc chắn? </h2>
-
+<br/>
 @using (Html.BeginForm("HuyHoaDon", "KHACHHANG", FormMethod.Post))
 {
     <br>
     <div class="form-actions no-color">
         <span style="color: red;"><strong> Vui lòng nhập mã hóa đơn để xác nhận hủy bỏ. </strong></span>
-        <br>
+        <br/> <br/>
         <span> Mã hóa đơn:</span> @Html.TextBox("id_hd")
-        <input type="submit" value="Xóa" class="btn btn-default" name="Xóa" /> |
+        <input type="submit" value="Xóa" class="btn btn-default" name="Xóa" /> 
+        <br/> <br/>
         @Html.ActionLink("Quay về", "Index", "Home")
     </div>
 }

@@ -45,8 +45,8 @@
                     <td>@item.TinhTrang</td>
                     <td>@item.TongTien</td>
                     <td>
+                        @Html.ActionLink("Chỉnh sửa", "SuaHoaDon", new { id = item.ID_HD }) |
                         @Html.ActionLink("Chi tiết", "ChiTietHoaDon", new { id = item.ID_HD })
-                        @Html.ActionLink("Hủy", "HuyHoaDon", new { id = item.ID_HD })
                     </td>
                 </tr>
             }

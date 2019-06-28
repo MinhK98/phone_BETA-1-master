@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> BẢNG ĐIỀU KHIỂN (BETA) </title>
+    <title> BẢNG ĐIỀU KHIỂN </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -33,6 +33,7 @@
                     <li>@Html.ActionLink("Danh sách khách hàng", "KhachHang", "NHANVIEN")</li>
                     <li>@Html.ActionLink("Danh sách sản phẩm", "SanPham", "NHANVIEN")</li>
                     <li>@Html.ActionLink("Danh sách hóa đơn", "HoaDon", "NHANVIEN")</li>
+                    <li><a href="@Url.Action("Index","Home")"> TRANG CHỦ </a></li>
                 </ul>
             </div>
         </div>
@@ -41,7 +42,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year MinhLOGI - Bảo lưu bản quyền</p>
+            <p>&copy; @DateTime.Now.Year Shopping Công nghệ - Bảo lưu bản quyền</p>
             <p> Tên đăng nhập: @Session["Log_Admin"] </p>
             <p> Chức vụ: @Session["Power"] </p>
             <p> HÔM NAY, NGÀY @DateTime.Now.ToString("dd-MM-yyyy") </p>

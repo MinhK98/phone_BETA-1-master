@@ -6,23 +6,30 @@
 
 @using (Html.BeginForm("TimKiemSanPham_LoaiHang", "Home", FormMethod.Post))
 {
-    <table cellpadding="0" cellspacing="0" class="table">
-        <tr>
-            <th> Tên sản phẩm </th>
-            <th> Giá sản phẩm </th>
-            <th> Trả góp </th>
-            <th> Ảnh </th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Name_SP</td>
-                <td>@item.Price_SP</td>
-                <td>@item.TraGop</td>
-                <td><a href="@Url.Action("Details", "Home", new {  id = item.ID_SP })"><img style="object-fit: cover;" src="@Url.Content(item.Photo)" width="600" height="315" /></a></td>
-                <td style="text-align: center;">@Html.ActionLink("Thêm vào giỏ", "OrderNow", "Cart", new { id = item.ID_SP }, null)</td>
-            </tr>
-        }
-    </table>
+    foreach (var item in Model)
+    {
+        <div class="col-md-4 product-men">
+            <div class="men-pro-item simpleCart_shelfItem">
+                <div class="men-thumb-item">
+                    <a href="@Url.Action("Details", "Home", new {  id = item.ID_SP })"><img style="object-fit: cover;" src="@Url.Content(item.Photo)" width="165" height="150" alt=""></a>
+                </div>
+                <div class="item-info-product ">
+                    <h4>
+                        <a href=""> @item.Name_SP </a>
+                    </h4>
+                    <div class="info-product-price">
+                        <span class="item_price"> @item.Price_SP VNĐ </span>
+                    </div>
+                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                        <form action="" method="post">
+                            <fieldset>
+                                @Html.ActionLink("Thêm vào giỏ", "OrderNow", "Cart", new { id = item.ID_SP }, null)
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 }
 

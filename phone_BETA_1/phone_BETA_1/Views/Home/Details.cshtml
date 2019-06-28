@@ -7,99 +7,69 @@
 
 @using (Html.BeginForm("Details", "Home", FormMethod.Post))
 {
-    <table cellpadding="0" cellspacing="0" class="table">
-        <dl class="dl-horizontal">
-            <dt style="visibility: hidden;">
-                @Html.DisplayNameFor(model => model.Mã_sản_phẩm)
-            </dt>
-
-            <dd style="visibility: hidden;">
-                @Html.DisplayFor(model => model.Mã_sản_phẩm)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Tên_sản_phẩm)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Tên_sản_phẩm)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Giá_sản_phẩm)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Giá_sản_phẩm)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Năm_sản_xuất)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Năm_sản_xuất)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Trả_góp)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Trả_góp)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Tình_trạng)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Tình_trạng)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Phụ_kiện)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Phụ_kiện)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Ảnh)
-            </dt>
-
-            <dd>
-                <img style="object-fit: cover;" src="@Url.Content(Model.Ảnh)" width="600" height="315" />
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Hãng_sản_suất)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Hãng_sản_suất)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Loại_hàng)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Loại_hàng)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Nhóm_hàng)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Nhóm_hàng)
-            </dd>
-
-        </dl>
-    </table>
+    <div class="banner-bootom-w3-agileits">
+        <div class="container">
+            <div class="col-md-5 single-right-left ">
+                <div class="grid images_3_of_2">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li><img style="object-fit: cover;" src="@Url.Content(Model.Ảnh)" width="400" height="300"></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 single-right-left simpleCart_shelfItem" style="padding-left: 0px;">
+                <h3> @Html.DisplayFor(model => model.Tên_sản_phẩm) </h3>
+                <div class="rating1">
+                    <span class="starRating">
+                        <input id="rating5" type="radio" name="rating" value="5">
+                        <label for="rating5">5</label>
+                        <input id="rating4" type="radio" name="rating" value="4">
+                        <label for="rating4">4</label>
+                        <input id="rating3" type="radio" name="rating" value="3" checked="">
+                        <label for="rating3">3</label>
+                        <input id="rating2" type="radio" name="rating" value="2">
+                        <label for="rating2">2</label>
+                        <input id="rating1" type="radio" name="rating" value="1">
+                        <label for="rating1">1</label>
+                    </span>
+                </div>
+                <p>
+                    <span class="item_price"> @Html.DisplayFor(model => model.Giá_sản_phẩm) VNĐ </span>
+                    <label> (@Html.DisplayFor(model => model.Tình_trạng)) </label>
+                </p>
+                <div class="single-infoagile">
+                    <ul>
+                        <li>
+                            Trả góp: @Html.DisplayFor(model => model.Trả_góp) %
+                        </li>
+                        <li>
+                            Năm sản xuất: @Html.DisplayFor(model => model.Năm_sản_xuất)
+                        </li>
+                        <li>
+                            Phụ kiện: @Html.DisplayFor(model => model.Phụ_kiện)
+                        </li>
+                        <li>
+                            Hãng: @Html.DisplayFor(model => model.Hãng_sản_suất)
+                        </li>
+                        <li>
+                            Loại sản phẩm: @Html.DisplayFor(model => model.Loại_hàng)
+                        </li>
+                        <li>
+                            Phân khúc: @Html.DisplayFor(model => model.Nhóm_hàng)
+                        </li>
+                    </ul>
+                </div>
+                <div style="font-size:xx-large;">
+                    @Html.ActionLink("THÊM VÀO GIỎ", "OrderNow", "Cart", new { id = Model.Mã_sản_phẩm }, null)
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
 }
-<p>
-    @Html.ActionLink("Quay về", "Index", "Home")
-</p>
+
+@*<p>
+        @Html.ActionLink("Quay về", "Index", "Home")
+    </p>*@
