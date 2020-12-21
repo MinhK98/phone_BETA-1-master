@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="phone_BETAEntities1-Web.config Connection String" description="phone_BETAEntities1 Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.Model_phone_BETA.csdl|res://*/Models.Model_phone_BETA.ssdl|res://*/Models.Model_phone_BETA.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=DESKTOP-FLOR3M6\SQLEXPRESS;Initial Catalog=phone_BETA;Integrated Security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\MTA\\Công\ nghệ\ phần\ mềm\\phone_BETA-1-master\\phone_BETA_1\\phone_BETA_1\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='phone_BETAEntities1']/@connectionString" />
+  </parameter>
+  <parameter name="phone_BETAEntities-Web.config Connection String" description="phone_BETAEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.Model_phone_BETA.csdl|res://*/Models.Model_phone_BETA.ssdl|res://*/Models.Model_phone_BETA.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=minhkhacdbserver.database.windows.net;initial catalog=phone_BETA;user id=minhkhac;password=Minh1234;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\MTA\\Công\ nghệ\ phần\ mềm\\phone_BETA-1-master\\phone_BETA_1\\phone_BETA_1\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='phone_BETAEntities']/@connectionString" />
+  </parameter>
+</parameters>

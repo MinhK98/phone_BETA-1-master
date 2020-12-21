@@ -30,7 +30,7 @@ namespace phone_BETA_1.Models
         [Compare("Pass")]
         public string ConfirmPassWord { get; set; }
         public string LoginErrorMessage { get; set; }
-        public string Power { get; set; }
+        public string Authorize { get; set; }
 
         public virtual NHANVIEN NHANVIEN { get; set; }
     }

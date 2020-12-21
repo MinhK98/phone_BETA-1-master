@@ -1,0 +1,140 @@
+﻿@model IEnumerable<phone_BETA_1.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "SanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> Danh sách sản phẩm </h2>
+
+<p>
+    <strong>
+        @Html.ActionLink("Thêm mới sản phẩm", "ThemSanPham", "NHANVIEN")
+    </strong>
+</p>
+<a href="@Url.Action("NhomHang", "NHANVIEN")"> Nhóm hàng </a> |
+<a href="@Url.Action("LoaiHang", "NHANVIEN")"> Loại hàng </a> |
+<a href="@Url.Action("HangSX", "NHANVIEN")"> Hãng sản xuất </a> |
+
+<style>
+    .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
+</style>
+
+
+<div class="dropdown">
+    <button class="dropbtn" style="border-radius: 60%;"> TÌM KIẾM </button>
+    <div class="dropdown-content">
+        <a href="@Url.Action("TimKiemSanPham_LoaiHang", "NHANVIEN")"> Tìm kiếm theo loại hàng </a>
+        <a href="@Url.Action("TimKiemSanPham_NhomHang", "NHANVIEN")"> Tìm kiếm theo nhóm hàng </a>
+        <a href="@Url.Action("TimKiemSanPham_HSX", "NHANVIEN")"> Tìm kiếm theo hãng sản xuất </a>
+        <a href="@Url.Action("TimKiemSanPham_Ca3", "NHANVIEN")"> Tìm kiếm theo cả 3 </a>
+        <a href="@Url.Action("TimKiemSanPham_TinhTrang", "NHANVIEN")"> Tìm kiếm theo tình trạng </a>
+        <a href="@Url.Action("TimKiemSanPham_TenSP", "NHANVIEN")"> Tìm kiếm theo tên </a>
+    </div>
+</div>
+<br>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_SP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name_SP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price_SP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year_SP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TraGop)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhuKien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_SP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name_SP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price_SP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year_SP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TraGop)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TinhTrang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhuKien)
+            </td>
+            <td>
+                <img style="object-fit: cover;" src="@Url.Content(item.Photo)" width="200" height="105" />
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh sửa", "SuaSanPham", new { id = item.ID_SP })
+                @Html.ActionLink("Chi tiết", "ChiTietSanPham", new { id = item.ID_SP })
+                @Html.ActionLink("Xóa", "XoaSanPham", new { id = item.ID_SP })
+            </td>
+        </tr>
+    }
+
+</table>

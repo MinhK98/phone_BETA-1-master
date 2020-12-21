@@ -1,0 +1,135 @@
+﻿@model IEnumerable<phone_BETA_1.Models.HOADON>
+
+@{
+    ViewBag.Title = "HoaDon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> TỔNG HỢP HÓA ĐƠN CÁC KHÁCH HÀNG: </h2>
+<br>
+
+<style>
+    .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
+</style>
+
+
+<div class="dropdown">
+    <button class="dropbtn" style="border-radius: 60%;"> TÌM KIẾM </button>
+    <div class="dropdown-content">
+        <a href="@Url.Action("TimKiemHoaDon", "NHANVIEN")"> Tìm kiếm theo ngày và tên khách hàng </a>
+        <a href="@Url.Action("TimKiemHoaDon_Ngay", "NHANVIEN")"> Tìm kiếm theo ngày </a>
+        <a href="@Url.Action("TimKiemHoaDon_Name", "NHANVIEN")"> Tìm kiếm theo tên khách hàng </a>
+        <a href="@Url.Action("TimKiemHoaDon_TinhTrang", "NHANVIEN")"> Tìm kiếm theo tình trạng </a>
+    </div>
+</div>
+<br>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_HD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name_Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SDT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Customer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongTien)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_HD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name_Customer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_Customer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TinhTrang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongTien)
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh sửa", "SuaHoaDon", new { id = item.ID_HD }) |
+                @Html.ActionLink("Chi tiết", "ChiTietHoaDon", new { id = item.ID_HD }) 
+            </td>
+        </tr>
+    }
+
+</table>

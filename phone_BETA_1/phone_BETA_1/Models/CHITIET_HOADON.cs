@@ -13,7 +13,7 @@ namespace phone_BETA_1.Models
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    
+
     public partial class CHITIET_HOADON
     {
         [DisplayName("Mã hóa đơn:")]
@@ -28,7 +28,7 @@ namespace phone_BETA_1.Models
         public string Name_SP { get; set; }
         [DisplayName("Ảnh sản phẩm:")]
         public string Photo { get; set; }
-    
+
         public virtual HOADON HOADON { get; set; }
         public virtual SANPHAM SANPHAM { get; set; }
     }

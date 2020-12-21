@@ -1,0 +1,78 @@
+﻿@model phone_BETA_1.Models.SANPHAM
+
+@{
+    ViewBag.Title = "XoaSanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Bạn có chắc sẽ xóa sản phẩm này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_SP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_SP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_SP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_SP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price_SP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price_SP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year_SP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year_SP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TraGop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TraGop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhuKien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhuKien)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" name="Xóa" /> |
+            @Html.ActionLink("Quay về", "SanPham", "SANPHAM")
+        </div>
+    }
+</div>

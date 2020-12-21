@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "OrderNow";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+@using phone_BETA_1.Controllers
+
+<h2 style="color: red;"> GIỎ HÀNG </h2>
+<br>
+<table class="table table-striped">
+    <tr>
+        <th>Tên sản phẩm</th>
+        <th>Giá tiền</th>
+        <th>Số lượng</th>
+        <th>Ảnh</th>
+        <th>Tổng tiền</th>
+    </tr>
+    @{
+        decimal s = 0;
+    }
+    @foreach (Item item in (List<Item>)Session["Cart"])
+    {
+        s = s + (int)item.Sanpham.Price_SP.Value * item.Quantity;
+        <tr>
+            <td>@item.Sanpham.Name_SP</td>
+            <td>@item.Sanpham.Price_SP (VNĐ) </td>
+            <td>@item.Quantity</td>
+            <td><img style="object-fit: cover;" src="@Url.Content(item.Sanpham.Photo)" width="200" height="105" /></td>
+            <td>@(item.Sanpham.Price_SP * item.Quantity) (VNĐ) </td>
+            <td>@Html.ActionLink("Xóa", "Delete", "CART", new { id = item.Sanpham.ID_SP }, null)</td>
+        </tr>
+    }
+</table>
+<br /> <br />
+<h4 style="color: cornflowerblue;"> Sắp xong rồi! Hãy điền đủ thông tin của bạn để hoàn tất đơn hàng :D </h4>
+<br />
+
+@using (Html.BeginForm("ProcessOrder", "CART", FormMethod.Post, new { id = "customer-form" }))
+{
+    <br>
+    <strong>Hóa đơn tổng (VNĐ): </strong> <input class="billing-address-name" type="text" name="totalPrice" value=@s readonly>
+    <br>
+    <div class="creditly-wrapper wthree, w3_agileits_wrapper">
+        <br>
+        <div class="information-wrapper">
+            <div class="first-row">
+                <div class="controls">
+                    <input class="billing-address-name" value=@Session["ID_Customer"] type="text" name="cusID" style="width: 720px;" readonly>
+                </div>
+                <div class="w3_agileits_card_number_grids">
+                    <div class="w3_agileits_card_number_grid_right">
+                        <div class="controls">
+                            <input type="text" placeholder="Họ và tên" name="cusName" style="width: 720px;" required>
+                        </div>
+                        <div class="clear"> </div>
+                    </div>
+                    <div class="controls">
+                        <input type="text" placeholder="Số điện thoại" name="cusPhone" style="width: 720px;" required>
+                    </div>
+                    <div class="controls">
+                        <input type="text" placeholder="Email" name="cusEmail" style="width: 720px;" required>
+                    </div>
+                    <div class="controls">
+                        <input type="text" placeholder="Địa chỉ" name="cusAddress" style="width: 720px;" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="myFunction()" class="submit check_out" type="submit"> Thanh toán đơn hàng </button>
+        <div class="checkout-right-basket">
+            <a href="@Url.Action("Index", "Home")">
+                Tiếp tục mua sắm
+                <span class="fa fa-hand-o-right" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+    function myFunction() {
+        alert("Thanh toán thành công. Đơn hàng của bạn sẽ được duyệt sớm nhất có thể :D");
+    }
+</script>
+

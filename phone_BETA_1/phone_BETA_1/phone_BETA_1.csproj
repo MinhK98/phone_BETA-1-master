@@ -141,7 +141,7 @@
     <Compile Include="Models\ADMIN.cs">
       <DependentUpon>Model_phone_BETA.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ChiTietSanPham_Result1.cs">
+    <Compile Include="Models\ChiTietSanPham_Result.cs">
       <DependentUpon>Model_phone_BETA.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CHITIET_HOADON.cs">
@@ -165,10 +165,7 @@
     <Compile Include="Models\HoaDon_SearchHD_3_Result.cs">
       <DependentUpon>Model_phone_BETA.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HoaDon_SearchHD_Result.cs">
-      <DependentUpon>Model_phone_BETA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HoaDon_SearchHoaDon_Result1.cs">
+    <Compile Include="Models\HoaDon_SearchHoaDon_Result.cs">
       <DependentUpon>Model_phone_BETA.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KHACHHANG.cs">
@@ -204,9 +201,6 @@
     <Compile Include="Models\SANPHAM.cs">
       <DependentUpon>Model_phone_BETA.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SanPham_ChiTietSanPham_Result.cs">
-      <DependentUpon>Model_phone_BETA.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SanPham_SearchHSX_Result.cs">
       <DependentUpon>Model_phone_BETA.tt</DependentUpon>
     </Compile>
@@ -223,18 +217,6 @@
       <DependentUpon>Model_phone_BETA.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SanPham_Search_3_Result.cs">
-      <DependentUpon>Model_phone_BETA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SanPham_Search_Result.cs">
-      <DependentUpon>Model_phone_BETA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model_phone_BETA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Model_phone_BETA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>Model_phone_BETA.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -290,13 +272,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model_phone_BETA.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model_phone_BETA.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model_phone_BETA.edmx.diagram">
-      <DependentUpon>Model_phone_BETA.edmx</DependentUpon>
-    </Content>
     <Content Include="fonts\montserrat\Montserrat-Bold.ttf" />
     <Content Include="fonts\montserrat\Montserrat-ExtraBold.ttf" />
     <Content Include="fonts\montserrat\Montserrat-Regular.ttf" />
@@ -307,6 +282,14 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
+    <EntityDeploy Include="Models\Model_phone_BETA.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model_phone_BETA.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model_phone_BETA.edmx.diagram">
+      <DependentUpon>Model_phone_BETA.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\phoneBETAMK - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\easing.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -428,7 +411,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:63741/</IISUrl>
+          <IISUrl>http://localhost:61014/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -9,7 +9,7 @@ namespace phone_BETA_1.Controllers
 {
     public class CartController : Controller
     {
-        private phone_BETAEntities1 db = new phone_BETAEntities1();
+        private phone_BETAEntities db = new phone_BETAEntities();
         // GET: CART
         public ActionResult Index()
         {
@@ -57,7 +57,7 @@ namespace phone_BETA_1.Controllers
 
         public ActionResult ProcessOrder(FormCollection frc)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 List<Item> lsItem = (List<Item>)Session["cart"];
                 // 1. Lưu vào bảng hóa đơn:

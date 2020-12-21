@@ -26,7 +26,7 @@ namespace phone_BETA_1.Models
         public int ID_HSX { get; set; }
         [DisplayName("Tên hãng sản xuất:")]
         public string Name_HSX { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SANPHAM> SANPHAMs { get; set; }
     }

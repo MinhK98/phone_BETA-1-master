@@ -11,7 +11,7 @@ namespace phone_BETA_1.Controllers
 {
     public class HomeController : Controller
     {
-        phone_BETAEntities1 db = new phone_BETAEntities1();
+        phone_BETAEntities db = new phone_BETAEntities();
 
         // 1. Chức năng: HIỂN THỊ SẢN PHẨM (NÓI CHUNG)
         public ActionResult Index()
@@ -24,9 +24,9 @@ namespace phone_BETA_1.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
-                phone_BETAEntities1 entities = new phone_BETAEntities1();
+                phone_BETAEntities entities = new phone_BETAEntities();
                 db.SANPHAMs.Where(x => x.ID_SP == id).FirstOrDefault();
                 return View(entities.ChiTietSanPham(id.ToString()).FirstOrDefault());
             }
@@ -35,54 +35,54 @@ namespace phone_BETA_1.Controllers
         // 3. Chức năng: HIỂN THỊ SẢN PHẨM THEO NHÓM HÀNG
         public ActionResult TimKiemSanPham_NhomHang()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_NH(""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchNH(""));
         }
         [HttpPost]
         public ActionResult TimKiemSanPham_NhomHang(string NhomHang)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_NH(NhomHang));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchNH(NhomHang));
         }
 
         // 4. Chức năng: HIỂN THỊ SẢN PHẨM THEO LOẠI HÀNG
         public ActionResult TimKiemSanPham_LoaiHang()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_LH(""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchLH(""));
         }
         [HttpPost]
         public ActionResult TimKiemSanPham_LoaiHang(string LoaiHang)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_LH(LoaiHang));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchLH(LoaiHang));
         }
 
         // 5. Chức năng: HIỂN THỊ SẢN PHẨM THEO HÃNG SẢN XUẤT
         public ActionResult TimKiemSanPham_HSX()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_HSX(""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchHSX(""));
         }
         [HttpPost]
         public ActionResult TimKiemSanPham_HSX(string HangSX)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_HSX(HangSX));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchHSX(HangSX));
         }
 
         // 6. Chức năng: TÌM KIẾM SẢN PHẨM (NÓI CHUNG)
         public ActionResult TimKiemSanPham_TenSP()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_Name(""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchTenSP(""));
         }
 
         [HttpPost]
         public ActionResult TimKiemSanPham_TenSP(string Name_SP)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_Name(Name_SP));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchTenSP(Name_SP));
         }
     }
 }

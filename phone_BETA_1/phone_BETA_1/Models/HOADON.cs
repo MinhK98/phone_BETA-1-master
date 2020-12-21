@@ -41,7 +41,7 @@ namespace phone_BETA_1.Models
         public string TinhTrang { get; set; }
         [DisplayName("Tổng tiền:")]
         public string TongTien { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIET_HOADON> CHITIET_HOADON { get; set; }
         public virtual KHACHHANG KHACHHANG { get; set; }

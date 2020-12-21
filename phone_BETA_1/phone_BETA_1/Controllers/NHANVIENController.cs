@@ -16,7 +16,7 @@ namespace phone_BETA_1.Controllers
         //// 1. Chức năng: XEM SẢN PHẨM
         public ActionResult SanPham()
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.SANPHAMs.ToList());
             }
@@ -26,9 +26,9 @@ namespace phone_BETA_1.Controllers
         [HttpGet]
         public ActionResult ChiTietSanPham(int id)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
-                phone_BETAEntities1 entities = new phone_BETAEntities1();
+                phone_BETAEntities entities = new phone_BETAEntities();
                 db.SANPHAMs.Where(x => x.ID_SP == id).FirstOrDefault();              
                 return View(entities.ChiTietSanPham(id.ToString()).FirstOrDefault());
             }
@@ -49,7 +49,7 @@ namespace phone_BETA_1.Controllers
             sanpham.Photo = "~/Images/" + fileName;
             fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
             sanpham.ImageFile.SaveAs(fileName);
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 db.SANPHAMs.Add(sanpham);
                 db.SaveChanges();
@@ -60,7 +60,7 @@ namespace phone_BETA_1.Controllers
         //// 4. Chức năng: XÓA SẢN PHẨM
         public ActionResult XoaSanPham(int id)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.SANPHAMs.Where(x => x.ID_SP == id).FirstOrDefault());
             }
@@ -69,7 +69,7 @@ namespace phone_BETA_1.Controllers
         [HttpPost]
         public ActionResult XoaSanPham(int id, FormCollection collection)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 SANPHAM sanpham = db.SANPHAMs.Where(x => x.ID_SP == id).FirstOrDefault();
                 db.SANPHAMs.Remove(sanpham);
@@ -80,7 +80,7 @@ namespace phone_BETA_1.Controllers
         //// 5. Chức năng: SỬA SẢN PHẨM
         public ActionResult SuaSanPham(int id)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.SANPHAMs.Where(x => x.ID_SP == id).FirstOrDefault());
             }
@@ -95,7 +95,7 @@ namespace phone_BETA_1.Controllers
             sanpham.Photo = "~/Images/" + fileName;
             fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
             sanpham.ImageFile.SaveAs(fileName);
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 db.Entry(sanpham).State = EntityState.Modified;
                 db.SaveChanges();
@@ -109,21 +109,21 @@ namespace phone_BETA_1.Controllers
         //// 1. Chức năng: XEM VÀ TÌM KIẾM KHÁCH HÀNG
         public ActionResult KhachHang()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_Customers(""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.KhachHang_SearchKhachHang(""));
         }
 
         [HttpPost]
         public ActionResult KhachHang(string NameCustomer)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_Customers(NameCustomer));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.KhachHang_SearchKhachHang(NameCustomer));
         }
 
         //// 2. Chức năng: XEM CHI TIẾT KHÁCH HÀNG
         public ActionResult ChiTietKhachHang(int id)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.KHACHHANGs.Where(x => x.ID_Customer == id).FirstOrDefault());
             }
@@ -135,7 +135,7 @@ namespace phone_BETA_1.Controllers
         //// 1. Chức năng: XEM HÓA ĐƠN KHÁCH HÀNG
         public ActionResult HoaDon()
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.HOADONs.ToList());
             }
@@ -143,7 +143,7 @@ namespace phone_BETA_1.Controllers
         //// 2. Chức năng: XEM CHI TIẾT HÓA ĐƠN
         public ActionResult ChiTietHoaDon(int id)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.CHITIET_HOADON.Where(x => x.ID_HD == id).ToList());
             }
@@ -151,7 +151,7 @@ namespace phone_BETA_1.Controllers
         //// 3. Chức năng: CHỈNH SỬA STATUS CỦA HÓA ĐƠN
         public ActionResult SuaHoaDon(int id)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.HOADONs.Where(x => x.ID_HD == id).FirstOrDefault());
             }
@@ -162,7 +162,7 @@ namespace phone_BETA_1.Controllers
         {
             try
             {
-                using (phone_BETAEntities1 db = new phone_BETAEntities1())
+                using (phone_BETAEntities db = new phone_BETAEntities())
                 {
                     db.Entry(hoadon).State = EntityState.Modified;
                     db.SaveChanges();
@@ -178,55 +178,55 @@ namespace phone_BETA_1.Controllers
         //// 4. Chức năng: TÌM KIẾM HÓA ĐƠN THEO NGÀY VÀ TÊN KH
         public ActionResult TimKiemHoaDon()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.SearchHD_2("", "",""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.HoaDon_SearchHD_2("", "",""));
         }
 
         [HttpPost]
         public ActionResult TimKiemHoaDon(string NameCustomer, string DateBillFrom, string DateBillTo)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.SearchHD_2(NameCustomer, DateBillFrom, DateBillTo));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.HoaDon_SearchHD_2(NameCustomer, DateBillFrom, DateBillTo));
         }
 
         //// 5. Chức năng: TÌM KIẾM HÓA ĐƠN THEO NGÀY
         public ActionResult TimKiemHoaDon_Ngay()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.SearchHD_0("",""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.HoaDon_SearchHD_1("",""));
         }
 
         [HttpPost]
         public ActionResult TimKiemHoaDon_Ngay(string DateBillFrom, string DateBillTo)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.SearchHD_0(DateBillFrom, DateBillTo));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.HoaDon_SearchHD_1(DateBillFrom, DateBillTo));
         }
         //// 6. Chức năng: TÌM KIẾM HÓA ĐƠN THEO TÊN KHÁCH HÀNG
         public ActionResult TimKiemHoaDon_Name()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.SearchHD_3(""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.HoaDon_SearchHD_3(""));
         }
 
         [HttpPost]
         public ActionResult TimKiemHoaDon_Name(string NameCustomer)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.SearchHD_3(NameCustomer));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.HoaDon_SearchHD_3(NameCustomer));
         }
         //// 7. Chức năng: TÌM KIẾM HÓA ĐƠN THEO TÌNH TRẠNG
         public ActionResult TimKiemHoaDon_TinhTrang()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_HD_1(""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.HoaDon_SearchHoaDon(""));
         }
 
         [HttpPost]
         public ActionResult TimKiemHoaDon_TinhTrang(string TinhTrang)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_HD_1(TinhTrang));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.HoaDon_SearchHoaDon(TinhTrang));
         }
         //-----------------------------//
 
@@ -235,80 +235,80 @@ namespace phone_BETA_1.Controllers
         //// 1. Chức năng: TÌM KIẾM THEO LOẠI HÀNG
         public ActionResult TimKiemSanPham_LoaiHang()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_LH(""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchLH(""));
         }
 
         [HttpPost]
         public ActionResult TimKiemSanPham_LoaiHang(string LoaiHang)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_LH(LoaiHang));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchLH(LoaiHang));
         }
         //// 2. Chức năng: TÌM KIẾM THEO NHÓM HÀNG
         public ActionResult TimKiemSanPham_NhomHang()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_NH(""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchNH(""));
         }
 
         [HttpPost]
         public ActionResult TimKiemSanPham_NhomHang(string NhomHang)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_NH(NhomHang));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchNH(NhomHang));
         }
         //// 3. Chức năng: TÌM KIẾM THEO HÃNG SẢN XUẤT
         public ActionResult TimKiemSanPham_HSX()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_HSX(""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchHSX(""));
         }
 
         [HttpPost]
         public ActionResult TimKiemSanPham_HSX(string HangSX)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_HSX(HangSX));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchHSX(HangSX));
         }
         //// 4. Chức năng: TÌM KIẾM THEO CẢ 3
         public ActionResult TimKiemSanPham_Ca3()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_3("","",""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_Search_3("","",""));
         }
 
         [HttpPost]
         public ActionResult TimKiemSanPham_Ca3(string NH, string HSX, string LH)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_3(NH, HSX, LH));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_Search_3(NH, HSX, LH));
         }
         //// 5. Chức năng: TÌM KIẾM THEO TÌNH TRẠNG
         public ActionResult TimKiemSanPham_TinhTrang()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_TinhTrang(""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchTinhTrang(""));
         }
 
         [HttpPost]
         public ActionResult TimKiemSanPham_TinhTrang(string TinhTrang)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_TinhTrang(TinhTrang));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchTinhTrang(TinhTrang));
         }
         //// 6. Chức năng: TÌM KIẾM THEO TÊN SẢN PHẨM
         public ActionResult TimKiemSanPham_TenSP()
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_Name(""));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchTenSP(""));
         }
 
         [HttpPost]
         public ActionResult TimKiemSanPham_TenSP(string Name_SP)
         {
-            phone_BETAEntities1 entities = new phone_BETAEntities1();
-            return View(entities.Search_SP_Name(Name_SP));
+            phone_BETAEntities entities = new phone_BETAEntities();
+            return View(entities.SanPham_SearchTenSP(Name_SP));
         }
         //-----------------------------//
 
@@ -317,7 +317,7 @@ namespace phone_BETA_1.Controllers
         //// 1. Chức năng: XEM DANH SÁCH LOẠI HÀNG
         public ActionResult LoaiHang()
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.LOAIHANGs.ToList());
             }
@@ -333,7 +333,7 @@ namespace phone_BETA_1.Controllers
         [HttpPost]
         public ActionResult ThemLoaiHang(LOAIHANG loaihang, FormCollection frc)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 db.LOAIHANGs.Add(loaihang);
                 db.SaveChanges();
@@ -344,7 +344,7 @@ namespace phone_BETA_1.Controllers
         //// 3. Chức năng: SỬA TÊN LOẠI HÀNG
         public ActionResult SuaLoaiHang(int id)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.LOAIHANGs.Where(x => x.ID_LH == id).FirstOrDefault());
             }
@@ -353,7 +353,7 @@ namespace phone_BETA_1.Controllers
         [HttpPost]
         public ActionResult SuaLoaiHang(int id, LOAIHANG loaihang)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 db.Entry(loaihang).State = EntityState.Modified;
                 db.SaveChanges();
@@ -367,7 +367,7 @@ namespace phone_BETA_1.Controllers
         //// 1. Chức năng: XEM DANH SÁCH NHÓM HÀNG
         public ActionResult NhomHang()
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.NHOMHANGs.ToList());
             }
@@ -383,7 +383,7 @@ namespace phone_BETA_1.Controllers
         [HttpPost]
         public ActionResult ThemNhomHang(NHOMHANG nhomhang, FormCollection frc)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 db.NHOMHANGs.Add(nhomhang);
                 db.SaveChanges();
@@ -394,7 +394,7 @@ namespace phone_BETA_1.Controllers
         //// 3. Chức năng: SỬA TÊN NHÓM HÀNG
         public ActionResult SuaNhomHang(int id)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.NHOMHANGs.Where(x => x.ID_NH == id).FirstOrDefault());
             }
@@ -403,7 +403,7 @@ namespace phone_BETA_1.Controllers
         [HttpPost]
         public ActionResult SuaNhomHang(int id, NHOMHANG nhomhang)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 db.Entry(nhomhang).State = EntityState.Modified;
                 db.SaveChanges();
@@ -417,7 +417,7 @@ namespace phone_BETA_1.Controllers
         //// 1. Chức năng: XEM DANH SÁCH HÃNG SẢN XUẤT
         public ActionResult HangSX()
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.HANG_SX.ToList());
             }
@@ -433,7 +433,7 @@ namespace phone_BETA_1.Controllers
         [HttpPost]
         public ActionResult ThemHangSX(HANG_SX hangsx, FormCollection frc)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 db.HANG_SX.Add(hangsx);
                 db.SaveChanges();
@@ -444,7 +444,7 @@ namespace phone_BETA_1.Controllers
         //// 3. Chức năng: SỬA TÊN HÃNG SẢN XUẤT
         public ActionResult SuaHangSX(int id)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.HANG_SX.Where(x => x.ID_HSX == id).FirstOrDefault());
             }
@@ -453,7 +453,7 @@ namespace phone_BETA_1.Controllers
         [HttpPost]
         public ActionResult SuaHangSX(int id, HANG_SX hangsx)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 db.Entry(hangsx).State = EntityState.Modified;
                 db.SaveChanges();
@@ -467,7 +467,7 @@ namespace phone_BETA_1.Controllers
         //// 1. Chức năng: Xóa tài khoản nhân viên
         public ActionResult XoaTaiKhoan()
         {
-            using (phone_BETAEntities1 entities = new phone_BETAEntities1())
+            using (phone_BETAEntities entities = new phone_BETAEntities())
             {
                 return View(entities.XoaTK_NHANVIEN(("")));
             }
@@ -476,7 +476,7 @@ namespace phone_BETA_1.Controllers
         [HttpPost]
         public ActionResult XoaTaiKhoan(string id_admin)
         {
-            using (phone_BETAEntities1 entities = new phone_BETAEntities1())
+            using (phone_BETAEntities entities = new phone_BETAEntities())
             {
                 entities.XoaTK_NHANVIEN(id_admin);
                 Session.Abandon();
@@ -487,7 +487,7 @@ namespace phone_BETA_1.Controllers
         // 2. Chức năng: XEM THÔNG TIN CÁ NHÂN
         public ActionResult ThongTinNV(int id)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.NHANVIENs.Where(x => x.ID_Admin == id).FirstOrDefault());
             }
@@ -496,7 +496,7 @@ namespace phone_BETA_1.Controllers
         // 3. Chức năng: THAY ĐỔI THÔNG TIN CÁ NHÂN
         public ActionResult SuaThongTin(int id)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.NHANVIENs.Where(x => x.ID_Admin == id).FirstOrDefault());
             }
@@ -505,7 +505,7 @@ namespace phone_BETA_1.Controllers
         [HttpPost]
         public ActionResult SuaThongTin(int id, NHANVIEN nhanvien)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 db.Entry(nhanvien).State = EntityState.Modified;
                 db.SaveChanges();

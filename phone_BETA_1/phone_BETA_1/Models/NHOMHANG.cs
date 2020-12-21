@@ -26,7 +26,7 @@ namespace phone_BETA_1.Models
         public int ID_NH { get; set; }
         [DisplayName("Tên nhóm hàng:")]
         public string Name_NH { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SANPHAM> SANPHAMs { get; set; }
     }

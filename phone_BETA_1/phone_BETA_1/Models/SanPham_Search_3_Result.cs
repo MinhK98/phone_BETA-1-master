@@ -10,7 +10,7 @@
 namespace phone_BETA_1.Models
 {
     using System;
-    
+
     public partial class SanPham_Search_3_Result
     {
         public int ID_SP { get; set; }

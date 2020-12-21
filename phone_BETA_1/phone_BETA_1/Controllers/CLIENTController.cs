@@ -19,7 +19,7 @@ namespace phone_BETA_1.Controllers
         [HttpPost]
         public ActionResult Authorize(phone_BETA_1.Models.CLIENT clientModel)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 var clientDetails = db.CLIENTS.Where(x => x.Log_Customer == clientModel.Log_Customer && x.Pass == clientModel.Pass).FirstOrDefault();
                 if (clientDetails == null)
@@ -53,7 +53,7 @@ namespace phone_BETA_1.Controllers
         [HttpPost]
         public ActionResult SignUp(KHACHHANG kh, FormCollection frc)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 // 1. Tạo thông tin khách hàng:
                 db.KHACHHANGs.Add(kh);
@@ -76,7 +76,7 @@ namespace phone_BETA_1.Controllers
         // 3. Chức năng: CHỈNH SỬA THÔNG TIN TÀI KHOẢN
         public ActionResult Edit(int id)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.CLIENTS.Where(x => x.ID_Customer == id).FirstOrDefault());
             }
@@ -87,7 +87,7 @@ namespace phone_BETA_1.Controllers
         {
             try
             {
-                using (phone_BETAEntities1 db = new phone_BETAEntities1())
+                using (phone_BETAEntities db = new phone_BETAEntities())
                 {
                     db.Entry(client).State = EntityState.Modified;
                     db.SaveChanges();

@@ -20,7 +20,7 @@ namespace phone_BETA_1.Controllers
         [HttpPost]
         public ActionResult Authorize(phone_BETA_1.Models.ADMIN adminModel)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 var adminDetails = db.ADMINS.Where(x => x.Log_Admin == adminModel.Log_Admin && x.Pass == adminModel.Pass).FirstOrDefault();
                 if (adminDetails == null)
@@ -32,7 +32,7 @@ namespace phone_BETA_1.Controllers
                 {
                     Session["ID_Admin"] = adminDetails.ID_Admin;
                     Session["Log_Admin"] = adminDetails.Log_Admin;
-                    Session["Power"] = adminDetails.Power;
+                    Session["Authorize"] = adminDetails.Authorize;
                     return RedirectToAction("KhachHang", "NHANVIEN");
                 }
             }
@@ -57,7 +57,7 @@ namespace phone_BETA_1.Controllers
         [HttpPost]
         public ActionResult SignUp(NHANVIEN nv, FormCollection frc)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 // 1. Tạo thông tin nhân viên:
                 db.NHANVIENs.Add(nv);
@@ -69,7 +69,7 @@ namespace phone_BETA_1.Controllers
                     Log_Admin = "Staff" + nv.ID_Admin,
                     Pass = "Staff" + nv.ID_Admin,
                     ConfirmPassWord = "Staff" + nv.ID_Admin,
-                    Power = "Staff",
+                    Authorize = "Staff",
                 };
                 db.ADMINS.Add(ad);
                 db.SaveChanges();
@@ -82,7 +82,7 @@ namespace phone_BETA_1.Controllers
         //// 3. Chức năng: CHỈNH SỬA THÔNG TIN TÀI KHOẢN
         public ActionResult Edit(int id)
         {
-            using (phone_BETAEntities1 db = new phone_BETAEntities1())
+            using (phone_BETAEntities db = new phone_BETAEntities())
             {
                 return View(db.ADMINS.Where(x => x.ID_Admin == id).FirstOrDefault());
             }
@@ -93,7 +93,7 @@ namespace phone_BETA_1.Controllers
         {
             try
             {
-                using (phone_BETAEntities1 db = new phone_BETAEntities1())
+                using (phone_BETAEntities db = new phone_BETAEntities())
                 {
                     db.Entry(admin).State = EntityState.Modified;
                     db.SaveChanges();

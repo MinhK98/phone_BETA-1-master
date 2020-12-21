@@ -15,10 +15,10 @@ namespace phone_BETA_1.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class phone_BETAEntities1 : DbContext
+    public partial class phone_BETAEntities : DbContext
     {
-        public phone_BETAEntities1()
-            : base("name=phone_BETAEntities1")
+        public phone_BETAEntities()
+            : base("name=phone_BETAEntities")
         {
         }
     
@@ -29,6 +29,7 @@ namespace phone_BETA_1.Models
     
         public virtual DbSet<ADMIN> ADMINS { get; set; }
         public virtual DbSet<CHITIET_HOADON> CHITIET_HOADON { get; set; }
+        public virtual DbSet<CLIENT> CLIENTS { get; set; }
         public virtual DbSet<HANG_SX> HANG_SX { get; set; }
         public virtual DbSet<HOADON> HOADONs { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
@@ -36,110 +37,62 @@ namespace phone_BETA_1.Models
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<NHOMHANG> NHOMHANGs { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<CLIENT> CLIENTS { get; set; }
     
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        public virtual ObjectResult<ChiTietSanPham_Result> ChiTietSanPham(string iD_SP)
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
+            var iD_SPParameter = iD_SP != null ?
+                new ObjectParameter("ID_SP", iD_SP) :
+                new ObjectParameter("ID_SP", typeof(string));
     
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ChiTietSanPham_Result>("ChiTietSanPham", iD_SPParameter);
         }
     
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        public virtual ObjectResult<HoaDon_SearchHD_1_Result> HoaDon_SearchHD_1(string dateFrom, string dateTo)
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
+            var dateFromParameter = dateFrom != null ?
+                new ObjectParameter("DateFrom", dateFrom) :
+                new ObjectParameter("DateFrom", typeof(string));
     
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
+            var dateToParameter = dateTo != null ?
+                new ObjectParameter("DateTo", dateTo) :
+                new ObjectParameter("DateTo", typeof(string));
     
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HoaDon_SearchHD_1_Result>("HoaDon_SearchHD_1", dateFromParameter, dateToParameter);
         }
     
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        public virtual ObjectResult<HoaDon_SearchHD_2_Result> HoaDon_SearchHD_2(string name_Customer, string dateFrom, string dateTo)
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
+            var name_CustomerParameter = name_Customer != null ?
+                new ObjectParameter("Name_Customer", name_Customer) :
+                new ObjectParameter("Name_Customer", typeof(string));
     
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
+            var dateFromParameter = dateFrom != null ?
+                new ObjectParameter("DateFrom", dateFrom) :
+                new ObjectParameter("DateFrom", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+            var dateToParameter = dateTo != null ?
+                new ObjectParameter("DateTo", dateTo) :
+                new ObjectParameter("DateTo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HoaDon_SearchHD_2_Result>("HoaDon_SearchHD_2", name_CustomerParameter, dateFromParameter, dateToParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        public virtual ObjectResult<HoaDon_SearchHD_3_Result> HoaDon_SearchHD_3(string name_Customer)
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
+            var name_CustomerParameter = name_Customer != null ?
+                new ObjectParameter("Name_Customer", name_Customer) :
+                new ObjectParameter("Name_Customer", typeof(string));
     
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HoaDon_SearchHD_3_Result>("HoaDon_SearchHD_3", name_CustomerParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        public virtual ObjectResult<HoaDon_SearchHoaDon_Result> HoaDon_SearchHoaDon(string tinhTrang)
         {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
+            var tinhTrangParameter = tinhTrang != null ?
+                new ObjectParameter("TinhTrang", tinhTrang) :
+                new ObjectParameter("TinhTrang", typeof(string));
     
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HoaDon_SearchHoaDon_Result>("HoaDon_SearchHoaDon", tinhTrangParameter);
         }
     
         public virtual int Huy_HoaDon(string iD_HD)
@@ -160,100 +113,21 @@ namespace phone_BETA_1.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<KhachHang_SearchKhachHang_Result>("KhachHang_SearchKhachHang", name_CustomerParameter);
         }
     
-        public virtual int Xoa_SanPham(string iD_SP)
+        public virtual ObjectResult<SanPham_Search_3_Result> SanPham_Search_3(string iD_NH, string iD_HSX, string iD_LH)
         {
-            var iD_SPParameter = iD_SP != null ?
-                new ObjectParameter("ID_SP", iD_SP) :
-                new ObjectParameter("ID_SP", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Xoa_SanPham", iD_SPParameter);
-        }
-    
-        public virtual int XoaTK_KHACHHANG(string iD_Customer)
-        {
-            var iD_CustomerParameter = iD_Customer != null ?
-                new ObjectParameter("ID_Customer", iD_Customer) :
-                new ObjectParameter("ID_Customer", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("XoaTK_KHACHHANG", iD_CustomerParameter);
-        }
-    
-        public virtual ObjectResult<KHACHHANG> Search_Customers(string name_Customer)
-        {
-            var name_CustomerParameter = name_Customer != null ?
-                new ObjectParameter("Name_Customer", name_Customer) :
-                new ObjectParameter("Name_Customer", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<KHACHHANG>("Search_Customers", name_CustomerParameter);
-        }
-    
-        public virtual ObjectResult<KHACHHANG> Search_Customers(string name_Customer, MergeOption mergeOption)
-        {
-            var name_CustomerParameter = name_Customer != null ?
-                new ObjectParameter("Name_Customer", name_Customer) :
-                new ObjectParameter("Name_Customer", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<KHACHHANG>("Search_Customers", mergeOption, name_CustomerParameter);
-        }
-    
-        public virtual ObjectResult<HOADON> Search_Bills(string name_Customer, Nullable<System.DateTime> dateCreate)
-        {
-            var name_CustomerParameter = name_Customer != null ?
-                new ObjectParameter("Name_Customer", name_Customer) :
-                new ObjectParameter("Name_Customer", typeof(string));
-    
-            var dateCreateParameter = dateCreate.HasValue ?
-                new ObjectParameter("DateCreate", dateCreate) :
-                new ObjectParameter("DateCreate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOADON>("Search_Bills", name_CustomerParameter, dateCreateParameter);
-        }
-    
-        public virtual ObjectResult<HOADON> Search_Bills(string name_Customer, Nullable<System.DateTime> dateCreate, MergeOption mergeOption)
-        {
-            var name_CustomerParameter = name_Customer != null ?
-                new ObjectParameter("Name_Customer", name_Customer) :
-                new ObjectParameter("Name_Customer", typeof(string));
-    
-            var dateCreateParameter = dateCreate.HasValue ?
-                new ObjectParameter("DateCreate", dateCreate) :
-                new ObjectParameter("DateCreate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOADON>("Search_Bills", mergeOption, name_CustomerParameter, dateCreateParameter);
-        }
-    
-        public virtual ObjectResult<HoaDon_SearchHD_2_Result> HoaDon_SearchHD_2(string name_Customer, string dateFrom, string dateTo)
-        {
-            var name_CustomerParameter = name_Customer != null ?
-                new ObjectParameter("Name_Customer", name_Customer) :
-                new ObjectParameter("Name_Customer", typeof(string));
-    
-            var dateFromParameter = dateFrom != null ?
-                new ObjectParameter("DateFrom", dateFrom) :
-                new ObjectParameter("DateFrom", typeof(string));
-    
-            var dateToParameter = dateTo != null ?
-                new ObjectParameter("DateTo", dateTo) :
-                new ObjectParameter("DateTo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HoaDon_SearchHD_2_Result>("HoaDon_SearchHD_2", name_CustomerParameter, dateFromParameter, dateToParameter);
-        }
-    
-        public virtual ObjectResult<SanPham_Search_Result> SanPham_Search(Nullable<int> iD_NH, Nullable<int> iD_HSX, Nullable<int> iD_LH)
-        {
-            var iD_NHParameter = iD_NH.HasValue ?
+            var iD_NHParameter = iD_NH != null ?
                 new ObjectParameter("ID_NH", iD_NH) :
-                new ObjectParameter("ID_NH", typeof(int));
+                new ObjectParameter("ID_NH", typeof(string));
     
-            var iD_HSXParameter = iD_HSX.HasValue ?
+            var iD_HSXParameter = iD_HSX != null ?
                 new ObjectParameter("ID_HSX", iD_HSX) :
-                new ObjectParameter("ID_HSX", typeof(int));
+                new ObjectParameter("ID_HSX", typeof(string));
     
-            var iD_LHParameter = iD_LH.HasValue ?
+            var iD_LHParameter = iD_LH != null ?
                 new ObjectParameter("ID_LH", iD_LH) :
-                new ObjectParameter("ID_LH", typeof(int));
+                new ObjectParameter("ID_LH", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SanPham_Search_Result>("SanPham_Search", iD_NHParameter, iD_HSXParameter, iD_LHParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SanPham_Search_3_Result>("SanPham_Search_3", iD_NHParameter, iD_HSXParameter, iD_LHParameter);
         }
     
         public virtual ObjectResult<SanPham_SearchHSX_Result> SanPham_SearchHSX(string iD_HSX)
@@ -301,323 +175,22 @@ namespace phone_BETA_1.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SanPham_SearchTinhTrang_Result>("SanPham_SearchTinhTrang", tinhTrangParameter);
         }
     
-        public virtual ObjectResult<SANPHAM> SanPham_Search_General(Nullable<int> iD_NH, Nullable<int> iD_HSX, Nullable<int> iD_LH)
+        public virtual int Xoa_SanPham(string iD_SP)
         {
-            var iD_NHParameter = iD_NH.HasValue ?
-                new ObjectParameter("ID_NH", iD_NH) :
-                new ObjectParameter("ID_NH", typeof(int));
+            var iD_SPParameter = iD_SP != null ?
+                new ObjectParameter("ID_SP", iD_SP) :
+                new ObjectParameter("ID_SP", typeof(string));
     
-            var iD_HSXParameter = iD_HSX.HasValue ?
-                new ObjectParameter("ID_HSX", iD_HSX) :
-                new ObjectParameter("ID_HSX", typeof(int));
-    
-            var iD_LHParameter = iD_LH.HasValue ?
-                new ObjectParameter("ID_LH", iD_LH) :
-                new ObjectParameter("ID_LH", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("SanPham_Search_General", iD_NHParameter, iD_HSXParameter, iD_LHParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Xoa_SanPham", iD_SPParameter);
         }
     
-        public virtual ObjectResult<SANPHAM> SanPham_Search_General(Nullable<int> iD_NH, Nullable<int> iD_HSX, Nullable<int> iD_LH, MergeOption mergeOption)
+        public virtual int XoaTK_KHACHHANG(string iD_Customer)
         {
-            var iD_NHParameter = iD_NH.HasValue ?
-                new ObjectParameter("ID_NH", iD_NH) :
-                new ObjectParameter("ID_NH", typeof(int));
-    
-            var iD_HSXParameter = iD_HSX.HasValue ?
-                new ObjectParameter("ID_HSX", iD_HSX) :
-                new ObjectParameter("ID_HSX", typeof(int));
-    
-            var iD_LHParameter = iD_LH.HasValue ?
-                new ObjectParameter("ID_LH", iD_LH) :
-                new ObjectParameter("ID_LH", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("SanPham_Search_General", mergeOption, iD_NHParameter, iD_HSXParameter, iD_LHParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> SanPham_Search_HangSX(string iD_HSX)
-        {
-            var iD_HSXParameter = iD_HSX != null ?
-                new ObjectParameter("ID_HSX", iD_HSX) :
-                new ObjectParameter("ID_HSX", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("SanPham_Search_HangSX", iD_HSXParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> SanPham_Search_HangSX(string iD_HSX, MergeOption mergeOption)
-        {
-            var iD_HSXParameter = iD_HSX != null ?
-                new ObjectParameter("ID_HSX", iD_HSX) :
-                new ObjectParameter("ID_HSX", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("SanPham_Search_HangSX", mergeOption, iD_HSXParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> SanPham_Search_LoaiHang(string iD_LH)
-        {
-            var iD_LHParameter = iD_LH != null ?
-                new ObjectParameter("ID_LH", iD_LH) :
-                new ObjectParameter("ID_LH", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("SanPham_Search_LoaiHang", iD_LHParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> SanPham_Search_LoaiHang(string iD_LH, MergeOption mergeOption)
-        {
-            var iD_LHParameter = iD_LH != null ?
-                new ObjectParameter("ID_LH", iD_LH) :
-                new ObjectParameter("ID_LH", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("SanPham_Search_LoaiHang", mergeOption, iD_LHParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> SanPham_Search_NH(string iD_NH)
-        {
-            var iD_NHParameter = iD_NH != null ?
-                new ObjectParameter("ID_NH", iD_NH) :
-                new ObjectParameter("ID_NH", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("SanPham_Search_NH", iD_NHParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> SanPham_Search_NH(string iD_NH, MergeOption mergeOption)
-        {
-            var iD_NHParameter = iD_NH != null ?
-                new ObjectParameter("ID_NH", iD_NH) :
-                new ObjectParameter("ID_NH", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("SanPham_Search_NH", mergeOption, iD_NHParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> SanPham_Search_TenSP(string name_SP)
-        {
-            var name_SPParameter = name_SP != null ?
-                new ObjectParameter("Name_SP", name_SP) :
-                new ObjectParameter("Name_SP", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("SanPham_Search_TenSP", name_SPParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> SanPham_Search_TenSP(string name_SP, MergeOption mergeOption)
-        {
-            var name_SPParameter = name_SP != null ?
-                new ObjectParameter("Name_SP", name_SP) :
-                new ObjectParameter("Name_SP", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("SanPham_Search_TenSP", mergeOption, name_SPParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> SanPham_Search_TinhTrang(string tinhTrang)
-        {
-            var tinhTrangParameter = tinhTrang != null ?
-                new ObjectParameter("TinhTrang", tinhTrang) :
-                new ObjectParameter("TinhTrang", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("SanPham_Search_TinhTrang", tinhTrangParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> SanPham_Search_TinhTrang(string tinhTrang, MergeOption mergeOption)
-        {
-            var tinhTrangParameter = tinhTrang != null ?
-                new ObjectParameter("TinhTrang", tinhTrang) :
-                new ObjectParameter("TinhTrang", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("SanPham_Search_TinhTrang", mergeOption, tinhTrangParameter);
-        }
-    
-        public virtual ObjectResult<SanPham_Search_3_Result> SanPham_Search_3(string iD_NH, string iD_HSX, string iD_LH)
-        {
-            var iD_NHParameter = iD_NH != null ?
-                new ObjectParameter("ID_NH", iD_NH) :
-                new ObjectParameter("ID_NH", typeof(string));
-    
-            var iD_HSXParameter = iD_HSX != null ?
-                new ObjectParameter("ID_HSX", iD_HSX) :
-                new ObjectParameter("ID_HSX", typeof(string));
-    
-            var iD_LHParameter = iD_LH != null ?
-                new ObjectParameter("ID_LH", iD_LH) :
-                new ObjectParameter("ID_LH", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SanPham_Search_3_Result>("SanPham_Search_3", iD_NHParameter, iD_HSXParameter, iD_LHParameter);
-        }
-    
-        public virtual ObjectResult<HoaDon_SearchHD_3_Result> HoaDon_SearchHD_3(string name_Customer)
-        {
-            var name_CustomerParameter = name_Customer != null ?
-                new ObjectParameter("Name_Customer", name_Customer) :
-                new ObjectParameter("Name_Customer", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HoaDon_SearchHD_3_Result>("HoaDon_SearchHD_3", name_CustomerParameter);
-        }
-    
-        public virtual ObjectResult<HoaDon_SearchHoaDon_Result1> HoaDon_SearchHoaDon(string tinhTrang)
-        {
-            var tinhTrangParameter = tinhTrang != null ?
-                new ObjectParameter("TinhTrang", tinhTrang) :
-                new ObjectParameter("TinhTrang", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HoaDon_SearchHoaDon_Result1>("HoaDon_SearchHoaDon", tinhTrangParameter);
-        }
-    
-        public virtual ObjectResult<HOADON> SearchHD_3(string name_Customer)
-        {
-            var name_CustomerParameter = name_Customer != null ?
-                new ObjectParameter("Name_Customer", name_Customer) :
-                new ObjectParameter("Name_Customer", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOADON>("SearchHD_3", name_CustomerParameter);
-        }
-    
-        public virtual ObjectResult<HOADON> SearchHD_3(string name_Customer, MergeOption mergeOption)
-        {
-            var name_CustomerParameter = name_Customer != null ?
-                new ObjectParameter("Name_Customer", name_Customer) :
-                new ObjectParameter("Name_Customer", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOADON>("SearchHD_3", mergeOption, name_CustomerParameter);
-        }
-    
-        public virtual ObjectResult<HOADON> Search_HD_1(string tinhTrang)
-        {
-            var tinhTrangParameter = tinhTrang != null ?
-                new ObjectParameter("TinhTrang", tinhTrang) :
-                new ObjectParameter("TinhTrang", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOADON>("Search_HD_1", tinhTrangParameter);
-        }
-    
-        public virtual ObjectResult<HOADON> Search_HD_1(string tinhTrang, MergeOption mergeOption)
-        {
-            var tinhTrangParameter = tinhTrang != null ?
-                new ObjectParameter("TinhTrang", tinhTrang) :
-                new ObjectParameter("TinhTrang", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOADON>("Search_HD_1", mergeOption, tinhTrangParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> Search_SP_3(string iD_NH, string iD_HSX, string iD_LH)
-        {
-            var iD_NHParameter = iD_NH != null ?
-                new ObjectParameter("ID_NH", iD_NH) :
-                new ObjectParameter("ID_NH", typeof(string));
-    
-            var iD_HSXParameter = iD_HSX != null ?
-                new ObjectParameter("ID_HSX", iD_HSX) :
-                new ObjectParameter("ID_HSX", typeof(string));
-    
-            var iD_LHParameter = iD_LH != null ?
-                new ObjectParameter("ID_LH", iD_LH) :
-                new ObjectParameter("ID_LH", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_3", iD_NHParameter, iD_HSXParameter, iD_LHParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> Search_SP_3(string iD_NH, string iD_HSX, string iD_LH, MergeOption mergeOption)
-        {
-            var iD_NHParameter = iD_NH != null ?
-                new ObjectParameter("ID_NH", iD_NH) :
-                new ObjectParameter("ID_NH", typeof(string));
-    
-            var iD_HSXParameter = iD_HSX != null ?
-                new ObjectParameter("ID_HSX", iD_HSX) :
-                new ObjectParameter("ID_HSX", typeof(string));
-    
-            var iD_LHParameter = iD_LH != null ?
-                new ObjectParameter("ID_LH", iD_LH) :
-                new ObjectParameter("ID_LH", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_3", mergeOption, iD_NHParameter, iD_HSXParameter, iD_LHParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> Search_SP_HSX(string iD_HSX)
-        {
-            var iD_HSXParameter = iD_HSX != null ?
-                new ObjectParameter("ID_HSX", iD_HSX) :
-                new ObjectParameter("ID_HSX", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_HSX", iD_HSXParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> Search_SP_HSX(string iD_HSX, MergeOption mergeOption)
-        {
-            var iD_HSXParameter = iD_HSX != null ?
-                new ObjectParameter("ID_HSX", iD_HSX) :
-                new ObjectParameter("ID_HSX", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_HSX", mergeOption, iD_HSXParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> Search_SP_LH(string iD_LH)
-        {
-            var iD_LHParameter = iD_LH != null ?
-                new ObjectParameter("ID_LH", iD_LH) :
-                new ObjectParameter("ID_LH", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_LH", iD_LHParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> Search_SP_LH(string iD_LH, MergeOption mergeOption)
-        {
-            var iD_LHParameter = iD_LH != null ?
-                new ObjectParameter("ID_LH", iD_LH) :
-                new ObjectParameter("ID_LH", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_LH", mergeOption, iD_LHParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> Search_SP_NH(string iD_NH)
-        {
-            var iD_NHParameter = iD_NH != null ?
-                new ObjectParameter("ID_NH", iD_NH) :
-                new ObjectParameter("ID_NH", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_NH", iD_NHParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> Search_SP_NH(string iD_NH, MergeOption mergeOption)
-        {
-            var iD_NHParameter = iD_NH != null ?
-                new ObjectParameter("ID_NH", iD_NH) :
-                new ObjectParameter("ID_NH", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_NH", mergeOption, iD_NHParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> Search_SP_Name(string name_SP)
-        {
-            var name_SPParameter = name_SP != null ?
-                new ObjectParameter("Name_SP", name_SP) :
-                new ObjectParameter("Name_SP", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_Name", name_SPParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> Search_SP_Name(string name_SP, MergeOption mergeOption)
-        {
-            var name_SPParameter = name_SP != null ?
-                new ObjectParameter("Name_SP", name_SP) :
-                new ObjectParameter("Name_SP", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_Name", mergeOption, name_SPParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> Search_SP_TinhTrang(string tinhTrang)
-        {
-            var tinhTrangParameter = tinhTrang != null ?
-                new ObjectParameter("TinhTrang", tinhTrang) :
-                new ObjectParameter("TinhTrang", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_TinhTrang", tinhTrangParameter);
-        }
-    
-        public virtual ObjectResult<SANPHAM> Search_SP_TinhTrang(string tinhTrang, MergeOption mergeOption)
-        {
-            var tinhTrangParameter = tinhTrang != null ?
-                new ObjectParameter("TinhTrang", tinhTrang) :
-                new ObjectParameter("TinhTrang", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SANPHAM>("Search_SP_TinhTrang", mergeOption, tinhTrangParameter);
+            var iD_CustomerParameter = iD_Customer != null ?
+                new ObjectParameter("ID_Customer", iD_Customer) :
+                new ObjectParameter("ID_Customer", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("XoaTK_KHACHHANG", iD_CustomerParameter);
         }
     
         public virtual int XoaTK_NHANVIEN(string iD_Admin)
@@ -627,97 +200,6 @@ namespace phone_BETA_1.Models
                 new ObjectParameter("ID_Admin", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("XoaTK_NHANVIEN", iD_AdminParameter);
-        }
-    
-        public virtual ObjectResult<ChiTietSanPham_Result1> ChiTietSanPham(string iD_SP)
-        {
-            var iD_SPParameter = iD_SP != null ?
-                new ObjectParameter("ID_SP", iD_SP) :
-                new ObjectParameter("ID_SP", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ChiTietSanPham_Result1>("ChiTietSanPham", iD_SPParameter);
-        }
-    
-        public virtual ObjectResult<ChiTietSanPham_Result1> ChiTiet_SanPham(string iD_SP)
-        {
-            var iD_SPParameter = iD_SP != null ?
-                new ObjectParameter("ID_SP", iD_SP) :
-                new ObjectParameter("ID_SP", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ChiTietSanPham_Result1>("ChiTiet_SanPham", iD_SPParameter);
-        }
-    
-        public virtual ObjectResult<HoaDon_SearchHD_1_Result> HoaDon_SearchHD_1(string dateFrom, string dateTo)
-        {
-            var dateFromParameter = dateFrom != null ?
-                new ObjectParameter("DateFrom", dateFrom) :
-                new ObjectParameter("DateFrom", typeof(string));
-    
-            var dateToParameter = dateTo != null ?
-                new ObjectParameter("DateTo", dateTo) :
-                new ObjectParameter("DateTo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HoaDon_SearchHD_1_Result>("HoaDon_SearchHD_1", dateFromParameter, dateToParameter);
-        }
-    
-        public virtual ObjectResult<HOADON> SearchHD_2(string name_Customer, string dateFrom, string dateTo)
-        {
-            var name_CustomerParameter = name_Customer != null ?
-                new ObjectParameter("Name_Customer", name_Customer) :
-                new ObjectParameter("Name_Customer", typeof(string));
-    
-            var dateFromParameter = dateFrom != null ?
-                new ObjectParameter("DateFrom", dateFrom) :
-                new ObjectParameter("DateFrom", typeof(string));
-    
-            var dateToParameter = dateTo != null ?
-                new ObjectParameter("DateTo", dateTo) :
-                new ObjectParameter("DateTo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOADON>("SearchHD_2", name_CustomerParameter, dateFromParameter, dateToParameter);
-        }
-    
-        public virtual ObjectResult<HOADON> SearchHD_2(string name_Customer, string dateFrom, string dateTo, MergeOption mergeOption)
-        {
-            var name_CustomerParameter = name_Customer != null ?
-                new ObjectParameter("Name_Customer", name_Customer) :
-                new ObjectParameter("Name_Customer", typeof(string));
-    
-            var dateFromParameter = dateFrom != null ?
-                new ObjectParameter("DateFrom", dateFrom) :
-                new ObjectParameter("DateFrom", typeof(string));
-    
-            var dateToParameter = dateTo != null ?
-                new ObjectParameter("DateTo", dateTo) :
-                new ObjectParameter("DateTo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOADON>("SearchHD_2", mergeOption, name_CustomerParameter, dateFromParameter, dateToParameter);
-        }
-    
-        public virtual ObjectResult<HOADON> SearchHD_0(string dateFrom, string dateTo)
-        {
-            var dateFromParameter = dateFrom != null ?
-                new ObjectParameter("DateFrom", dateFrom) :
-                new ObjectParameter("DateFrom", typeof(string));
-    
-            var dateToParameter = dateTo != null ?
-                new ObjectParameter("DateTo", dateTo) :
-                new ObjectParameter("DateTo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOADON>("SearchHD_0", dateFromParameter, dateToParameter);
-        }
-    
-        public virtual ObjectResult<HOADON> SearchHD_0(string dateFrom, string dateTo, MergeOption mergeOption)
-        {
-            var dateFromParameter = dateFrom != null ?
-                new ObjectParameter("DateFrom", dateFrom) :
-                new ObjectParameter("DateFrom", typeof(string));
-    
-            var dateToParameter = dateTo != null ?
-                new ObjectParameter("DateTo", dateTo) :
-                new ObjectParameter("DateTo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HOADON>("SearchHD_0", mergeOption, dateFromParameter, dateToParameter);
         }
     }
 }

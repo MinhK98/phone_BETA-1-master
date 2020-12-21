@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Programming\Web\phone_BETA_1\phone_BETA_1\Models\Model_phone_BETA.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\MTA\Công nghệ phần mềm\phone_BETA-1-master\phone_BETA_1\phone_BETA_1\Models\Model_phone_BETA.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
